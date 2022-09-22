@@ -1,7 +1,7 @@
 [versions]
 coroutine = "1.6.4"
 core = "1.8.0"
-appcompat = "1.5.0"
+appcompat = "1.5.1"
 material = "1.6.1"
 paging = "3.1.1"
 paging-compose = "1.0.0-alpha16"
