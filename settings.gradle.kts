@@ -16,3 +16,8 @@ dependencyResolutionManagement {
 rootProject.name = "Sample202209"
 include(":androidApp")
 include(":shared")
+include(":repository")
+include(":network")
+include(":util")
+include(":usecase")
+include(":data")

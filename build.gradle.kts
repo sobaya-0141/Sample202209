@@ -10,9 +10,7 @@ buildscript {
     repositories {
         mavenCentral()
     }
-    dependencies {
-        classpath("com.google.dagger:hilt-android-gradle-plugin:2.43.2")
-    }
+    dependencies {}
 }
 
 tasks.register("clean", Delete::class) {

@@ -22,7 +22,14 @@ kotlin {
     }
     
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies {
+                implementation(project(":repository"))
+                implementation(project(":network"))
+                implementation(project(":usecase"))
+                implementation("io.insert-koin:koin-core:3.2.1")
+            }
+        }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
@@ -56,9 +63,5 @@ android {
     compileSdk = 33
     defaultConfig {
         minSdk = 24
-    }
-
-    dependencies {
-
     }
 }
