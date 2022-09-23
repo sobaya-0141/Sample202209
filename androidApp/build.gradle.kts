@@ -1,7 +1,7 @@
 plugins {
     id("com.android.application")
     kotlin("android")
-    id("org.jlleitschuh.gradle.ktlint") version "11.0.0"
+    id("org.jlleitschuh.gradle.ktlint")
 }
 
 android {
@@ -52,4 +52,9 @@ dependencies {
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.bundles.android.test)
+}
+
+ktlint {
+    verbose.set(true)
+    outputToConsole.set(true)
 }
