@@ -1,0 +1,122 @@
+name: Check pull request
+
+on:
+  pull_request:
+
+env:
+  # 実行する Gradle コマンド(プロジェクトによって調整してください。)
+  GRADLE_KTLINT_TASK: 'ktlint'
+  GRADLE_ANDROID_LINT_TASK: 'lint'
+  GRADLE_UNIT_TEST_TASK: 'testDebugUnitTest'
+
+jobs:
+  check:
+    name: Check pull request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      # JDKのセットアップ
+      - name: set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '11'
+
+      - name: Restore gradle cache # Gradle のキャッシュをリストア
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle', '**/*.gradle.kts') }}
+
+      - name: Set up Ruby # gem を利用するので Ruby をセットアップ
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.6'
+          architecture: 'x64'
+
+      - name: Get gem info
+        env: # Danger で利用する gem をここで列挙
+          PACKAGES: danger danger-checkstyle_format danger-android_lint danger-junit
+        id: gem-info
+        run: |
+          echo "::set-output name=dir::$(gem environment gemdir)" # キャッシュするgemのディレクトリ
+          echo "::set-output name=packages::$PACKAGES" # install 用の文字列
+          echo "::set-output name=key::$(echo $PACKAGES | tr ' ' '-')" # キャッシュのキー文字列
+
+      - name: Restore gem cache # gem のキャッシュをリストア
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.gem-info.outputs.dir }}
+          key: ${{ runner.os }}-gem-${{ steps.gem-info.outputs.key }}
+
+      - name: Run ktlint
+        if: cancelled() != true
+        run: ./gradlew $GRADLE_KTLINT_TASK
+
+      - name: Run Android Lint
+        if: cancelled() != true
+        run: ./gradlew $GRADLE_ANDROID_LINT_TASK
+
+      - name: Run Unit Test
+        if: cancelled() != true
+        run: ./gradlew $GRADLE_UNIT_TEST_TASK
+
+      - name: Set up and run Danger
+        if: cancelled() != true # 中断されない限り、エラーでも実行
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # 標準で利用できるトークンを利用
+          JOB_STATUS: ${{ job.status }} # jobのステータスを Danger へ受け渡す
+        run: |
+          gem install ${{ steps.gem-info.outputs.packages }}
+          danger --dangerfile='.github/workflows/check-pull-request.danger'
+
+  build:
+    name: Build Apk
+    needs: check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '11'
+      - name: Build with Gradle
+        run: ./gradlew assembleDebug --stacktrace
+
+      - name: Upload app APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-debug
+          path: app/build/outputs/apk/debug/app-debug.apk
+
+  firebase:
+    name: Run Test on Firebase Test Lab
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Download APK
+        uses: actions/download-artifact@v3
+        with:
+          name: app-debug
+
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v0'
+        with:
+          workload_identity_provider: ${{ secrets.WIF }}
+          service_account: ${{ secrets.SERVICE_ACCOUNT }}
+
+      - name: Run Test on Firebase Test Lab
+        run: gcloud firebase test android run --type robo --app app-debug.apk --device model=oriole,version=31,locale=ja,orientation=portrait

@@ -1,0 +1,19 @@
+name: Comment Screenshot Test Result
+on:
+  workflow_run:
+    workflows: [Screenshot Test]
+
+jobs:
+  screenshot-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: add artifact links to pull request and related issues step
+        uses: tonyhallett/artifacts-url-comments@v1.1.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          workflowPayload: ${{toJson(github.event.client_payload)}}
+          prefix: There are differences in Compose previews. Please check your build and download the diff artifact.
+          format: name

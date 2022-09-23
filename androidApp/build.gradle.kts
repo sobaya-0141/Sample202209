@@ -1,7 +1,7 @@
 plugins {
     id("com.android.application")
     kotlin("android")
-    kotlin("kapt")
+    id("org.jlleitschuh.gradle.ktlint") version "11.0.0"
 }
 
 android {
@@ -44,8 +44,6 @@ dependencies {
     implementation(libs.kotlinxCoroutinesAndroid)
     implementation(libs.bundles.compose)
     implementation(libs.lifecycle.runtime.ktx)
-    implementation(libs.bundles.hilt)
-    kapt(libs.hilt.compiler)
     implementation(libs.coil.compose)
     implementation(libs.bundles.accompanist.pager)
     implementation(libs.bundles.compose.navigastion)
