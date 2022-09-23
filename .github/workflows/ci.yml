@@ -37,7 +37,7 @@ jobs:
       - name: Set up Ruby # gem を利用するので Ruby をセットアップ
         uses: actions/setup-ruby@v1
         with:
-          ruby-version: '2.6'
+          ruby-version: '2.7.0'
           architecture: 'x64'
 
       - name: Get gem info
