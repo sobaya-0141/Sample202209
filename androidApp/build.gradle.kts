@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     id("org.jlleitschuh.gradle.ktlint")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -29,6 +30,11 @@ android {
         getByName("release") {
             isMinifyEnabled = false
         }
+        getByName("debug") {
+            isMinifyEnabled = false
+            isDebuggable = true
+            applicationIdSuffix = ".debug"
+        }
     }
 }
 
@@ -52,6 +58,8 @@ dependencies {
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.bundles.android.test)
+
+    implementation(platform(libs.firebaseBom))
 }
 
 ktlint {

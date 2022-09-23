@@ -9,9 +9,12 @@ plugins {
 
 buildscript {
     repositories {
+        google()
         mavenCentral()
     }
-    dependencies {}
+    dependencies {
+        classpath(libs.googleService)
+    }
 }
 
 tasks.register("clean", Delete::class) {
