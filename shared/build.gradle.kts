@@ -27,7 +27,7 @@ kotlin {
                 implementation(project(":repository"))
                 implementation(project(":network"))
                 implementation(project(":usecase"))
-                implementation("io.insert-koin:koin-core:3.2.1")
+                implementation("io.insert-koin:koin-core:3.2.2")
             }
         }
         val commonTest by getting {
