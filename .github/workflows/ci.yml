@@ -12,7 +12,7 @@ env:
 jobs:
   check:
     name: Check pull request
-    runs-on: macos-12
+    runs-on: ubuntu-latest
     steps:
       - name: Check out
         uses: actions/checkout@v3
@@ -79,7 +79,7 @@ jobs:
   build:
     name: Build Apk
     needs: check
-    runs-on: macos-12
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: set up JDK 11
@@ -99,7 +99,7 @@ jobs:
   firebase:
     name: Run Test on Firebase Test Lab
     needs: build
-    runs-on: macos-12
+    runs-on: ubuntu-latest
     permissions:
       contents: 'read'
       id-token: 'write'
