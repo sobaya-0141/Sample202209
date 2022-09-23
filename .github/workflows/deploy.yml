@@ -21,4 +21,4 @@ jobs:
           appId: ${{secrets.FIREBASE_DEV_APP_ID}}
           token: ${{secrets.FIREBASE_TOKEN}}
           groups: all
-          file: app/build/outputs/apk/debug/app-debug.apk
+          file: androidApp/build/outputs/apk/debug/androidApp-debug.apk
