@@ -36,6 +36,9 @@ android {
             applicationIdSuffix = ".debug"
         }
     }
+    lint {
+        disable.add("DialogFragmentCallbacksDetector")
+    }
 }
 
 dependencies {
