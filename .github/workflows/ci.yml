@@ -27,7 +27,7 @@ jobs:
           java-version: '11'
 
       - name: Restore gradle cache # Gradle のキャッシュをリストア
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             ~/.gradle/caches
@@ -50,7 +50,7 @@ jobs:
           echo "::set-output name=key::$(echo $PACKAGES | tr ' ' '-')" # キャッシュのキー文字列
 
       - name: Restore gem cache # gem のキャッシュをリストア
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ${{ steps.gem-info.outputs.dir }}
           key: ${{ runner.os }}-gem-${{ steps.gem-info.outputs.key }}
