@@ -30,7 +30,7 @@ koin = "3.2.2"
 ktorFit = "1.0.0-beta13"
 kotlinxSerializationJson = "1.4.0"
 coroutinesCore = "1.6.4"
-fireBaseBom = "30.4.1"
+fireBaseBom = "30.5.0"
 googleService = "4.3.14"
 
 [libraries]
