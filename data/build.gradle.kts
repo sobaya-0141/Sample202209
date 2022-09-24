@@ -21,7 +21,7 @@ kotlin {
             baseName = "data"
         }
     }
-    
+
     sourceSets {
         val commonMain by getting {
             dependencies {
