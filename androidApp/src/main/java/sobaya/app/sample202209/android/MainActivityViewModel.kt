@@ -22,12 +22,12 @@ class MainActivityViewModel(private val getRandomDogUseCase: GetRandomDogUseCase
     private val randomDogRetryTrigger = RetryTrigger()
     private val randomDog: StateFlow<sobaya.app.util.Result<RandomDogResponse>?> =
         retryableFlow(randomDogRetryTrigger) {
-        getRandomDogUseCase()
-    }.stateIn(
-        viewModelScope,
-        SharingStarted.Eagerly,
-        null
-    )
+            getRandomDogUseCase()
+        }.stateIn(
+            viewModelScope,
+            SharingStarted.Eagerly,
+            null
+        )
     var state by mutableStateOf("")
         private set
 

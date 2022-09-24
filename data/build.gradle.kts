@@ -3,6 +3,7 @@ plugins {
     kotlin("native.cocoapods")
     id("com.android.library")
     kotlin("plugin.serialization") version "1.7.10"
+    id("org.jlleitschuh.gradle.ktlint")
 }
 
 kotlin {
@@ -20,7 +21,7 @@ kotlin {
             baseName = "data"
         }
     }
-    
+
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -61,4 +62,9 @@ android {
     defaultConfig {
         minSdk = 24
     }
+}
+
+ktlint {
+    verbose.set(true)
+    outputToConsole.set(true)
 }

@@ -1,16 +1,24 @@
 plugins {
-    //trick: for the same plugin versions in all sub-modules
+    // trick: for the same plugin versions in all sub-modules
     id("com.android.application").version("7.4.0-alpha10").apply(false)
     id("com.android.library").version("7.4.0-alpha10").apply(false)
     kotlin("android").version("1.7.10").apply(false)
     kotlin("multiplatform").version("1.7.10").apply(false)
+    id("org.jlleitschuh.gradle.ktlint") version "11.0.0"
 }
 
 buildscript {
     repositories {
+        google()
         mavenCentral()
     }
-    dependencies {}
+    dependencies {
+        classpath(libs.googleService)
+    }
+}
+
+subprojects {
+    apply(plugin = "org.jlleitschuh.gradle.ktlint")
 }
 
 tasks.register("clean", Delete::class) {

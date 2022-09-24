@@ -19,7 +19,7 @@ kotlin {
             baseName = "util"
         }
     }
-    
+
     sourceSets {
         val commonMain by getting {
             dependencies {

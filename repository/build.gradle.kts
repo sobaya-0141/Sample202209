@@ -19,7 +19,7 @@ kotlin {
             baseName = "repository"
         }
     }
-    
+
     sourceSets {
         val commonMain by getting {
             dependencies {

@@ -30,6 +30,8 @@ koin = "3.2.1"
 ktorFit = "1.0.0-beta13"
 kotlinxSerializationJson = "1.4.0"
 coroutinesCore = "1.6.4"
+fireBaseBom = "30.4.1"
+googleService = "4.3.14"
 
 [libraries]
 kotlinxCoroutinesAndroid = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref ="coroutine" }
@@ -86,6 +88,8 @@ ktorFitLib = { module = "de.jensklingenberg.ktorfit:ktorfit-lib", version.ref = 
 ktorNegotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktorSerialization = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 coroutinesCore = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutinesCore" }
+firebaseBom = { module = "com.google.firebase:firebase-bom", version.ref = "fireBaseBom"}
+googleService = { module = "com.google.gms:google-services", version.ref = "googleService"}
 
 [bundles]
 paging = ["paging", "paging-compose"]

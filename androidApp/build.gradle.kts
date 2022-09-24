@@ -1,7 +1,7 @@
 plugins {
     id("com.android.application")
     kotlin("android")
-    kotlin("kapt")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -29,6 +29,14 @@ android {
         getByName("release") {
             isMinifyEnabled = false
         }
+        getByName("debug") {
+            isMinifyEnabled = false
+            isDebuggable = true
+            applicationIdSuffix = ".debug"
+        }
+    }
+    lint {
+        disable.add("DialogFragmentCallbacksDetector")
     }
 }
 
@@ -44,8 +52,6 @@ dependencies {
     implementation(libs.kotlinxCoroutinesAndroid)
     implementation(libs.bundles.compose)
     implementation(libs.lifecycle.runtime.ktx)
-    implementation(libs.bundles.hilt)
-    kapt(libs.hilt.compiler)
     implementation(libs.coil.compose)
     implementation(libs.bundles.accompanist.pager)
     implementation(libs.bundles.compose.navigastion)
@@ -54,4 +60,6 @@ dependencies {
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.bundles.android.test)
+
+    implementation(platform(libs.firebaseBom))
 }
