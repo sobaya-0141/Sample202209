@@ -1,6 +1,6 @@
 [versions]
 coroutine = "1.6.4"
-core = "1.8.0"
+core = "1.9.0"
 appcompat = "1.5.1"
 material = "1.6.1"
 paging = "3.1.1"
