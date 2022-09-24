@@ -19,7 +19,7 @@ kotlin {
             baseName = "usecase"
         }
     }
-    
+
     sourceSets {
         val commonMain by getting {
             dependencies {

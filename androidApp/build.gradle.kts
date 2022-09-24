@@ -1,7 +1,6 @@
 plugins {
     id("com.android.application")
     kotlin("android")
-    id("org.jlleitschuh.gradle.ktlint")
     id("com.google.gms.google-services")
 }
 
@@ -63,9 +62,4 @@ dependencies {
     androidTestImplementation(libs.bundles.android.test)
 
     implementation(platform(libs.firebaseBom))
-}
-
-ktlint {
-    verbose.set(true)
-    outputToConsole.set(true)
 }
