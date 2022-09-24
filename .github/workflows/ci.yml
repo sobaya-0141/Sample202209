@@ -57,7 +57,7 @@ jobs:
 
       - name: Run ktlint
         if: cancelled() != true
-        run: ./gradlew $GRADLE_KTLINT_TASK
+        run: ./gradlew $GRADLE_KTLINT_TASK --stacktrace
 
       - name: Run Android Lint
         if: cancelled() != true
