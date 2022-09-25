@@ -1,7 +1,7 @@
 package sobaya.app.network.di
 
 import de.jensklingenberg.ktorfit.Ktorfit
-import de.jensklingenberg.ktorfit.converter.builtin.FlowResponseConverter
+import de.jensklingenberg.ktorfit.converter.builtin.FlowRequestConverter
 import de.jensklingenberg.ktorfit.create
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
@@ -19,8 +19,9 @@ val ktorfit = Ktorfit
             }
         }
     )
-    .responseConverter(
-        FlowResponseConverter()
+    .requestConverter(
+        FlowRequestConverter()
     )
+    .responseConverter()
     .build()
 val dogApi = ktorfit.create<DogApi>()

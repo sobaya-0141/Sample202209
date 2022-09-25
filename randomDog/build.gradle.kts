@@ -1,18 +1,17 @@
 plugins {
-    id("com.android.application")
-    kotlin("android")
-    id("com.google.gms.google-services")
+    id("com.android.library")
+    id("org.jetbrains.kotlin.android")
 }
 
 android {
-    namespace = "sobaya.app.sample202209.android"
+    namespace = "sobaya.lib.randomdog"
     compileSdk = 33
+
     defaultConfig {
-        applicationId = "sobaya.app.sample202209.android"
         minSdk = 24
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
     buildFeatures {
         compose = true
@@ -20,20 +19,21 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.3.0"
     }
-    packagingOptions {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
-        }
-        getByName("debug") {
-            isMinifyEnabled = false
-            isDebuggable = true
-            applicationIdSuffix = ".debug"
-        }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
     lint {
         disable.add("DialogFragmentCallbacksDetector")
@@ -41,11 +41,9 @@ android {
 }
 
 dependencies {
-    implementation(project(":shared"))
     implementation(project(":data"))
     implementation(project(":usecase"))
     implementation(project(":util"))
-    implementation(project(":randomDog"))
 
     implementation(libs.core.ktx)
     implementation(libs.material)
@@ -61,6 +59,4 @@ dependencies {
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.bundles.android.test)
-
-    implementation(platform(libs.firebaseBom))
 }

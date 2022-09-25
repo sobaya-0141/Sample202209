@@ -4,6 +4,7 @@ import android.app.Application
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
+import sobaya.app.sample202209.android.di.viewModelModule
 import sobaya.app.sample202209.di.module
 
 class SampleApplication : Application() {

@@ -32,12 +32,15 @@ kotlinxSerializationJson = "1.4.0"
 coroutinesCore = "1.6.4"
 fireBaseBom = "30.5.0"
 googleService = "4.3.14"
+material3 = "1.0.0-beta03"
 
 [libraries]
 kotlinxCoroutinesAndroid = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref ="coroutine" }
 core-ktx = { module = "androidx.core:core-ktx", version.ref ="core" }
 appcompat = { module = "androidx.appcompat:appcompat", version.ref ="appcompat" }
 material = { module = "com.google.android.material:material", version.ref ="material" }
+material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
+material3WindowSize = { module = "androidx.compose.material3:material3-window-size-class", version.ref = "material3" }
 paging = { module = "androidx.paging:paging-runtime", version.ref ="paging" }
 paging-compose = { module = "androidx.paging:paging-compose", version.ref ="paging-compose" }
 compose-animation = { module = "androidx.compose.animation:animation", version.ref ="compose" }
@@ -93,7 +96,7 @@ googleService = { module = "com.google.gms:google-services", version.ref = "goog
 
 [bundles]
 paging = ["paging", "paging-compose"]
-compose = ["composeUi", "compose-material", "compose-ui-tooling-preview", "compose-foundation-layout", "compoase-material-icons-extended", "activity-compose", "constraintlayout-compose", "coil_compose", "coil-gif", "accompanist-permissions"]
+compose = ["composeUi", "compose-material", "compose-ui-tooling-preview", "compose-foundation-layout", "compoase-material-icons-extended", "activity-compose", "constraintlayout-compose", "coil_compose", "coil-gif", "accompanist-permissions", "material3"]
 lifecycle = ["lifecycle-runtime-ktx", "lifecycle-viewmodel-ktx", "lifecycle-viewmodel-compose"]
 android-test = ["androidx-junit", "espresso-core", "ui-test-junit4"]
 hilt = ["hilt-android", "hilt-compose"]
