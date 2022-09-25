@@ -3,77 +3,49 @@ package sobaya.app.sample202209.android
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Shapes
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.material.Typography
-import androidx.compose.material.darkColors
-import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import org.koin.android.ext.android.get
 import org.koin.androidx.viewmodel.ext.android.getViewModel
-
-@Composable
-fun MyApplicationTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    content: @Composable () -> Unit
-) {
-    val colors = if (darkTheme) {
-        darkColors(
-            primary = Color(0xFFBB86FC),
-            primaryVariant = Color(0xFF3700B3),
-            secondary = Color(0xFF03DAC5)
-        )
-    } else {
-        lightColors(
-            primary = Color(0xFF6200EE),
-            primaryVariant = Color(0xFF3700B3),
-            secondary = Color(0xFF03DAC5)
-        )
-    }
-    val typography = Typography(
-        body1 = TextStyle(
-            fontFamily = FontFamily.Default,
-            fontWeight = FontWeight.Normal,
-            fontSize = 16.sp
-        )
-    )
-    val shapes = Shapes(
-        small = RoundedCornerShape(4.dp),
-        medium = RoundedCornerShape(4.dp),
-        large = RoundedCornerShape(0.dp)
-    )
-
-    MaterialTheme(
-        colors = colors,
-        typography = typography,
-        shapes = shapes,
-        content = content
-    )
-}
+import sobaya.app.sample202209.android.theme.SampleTheme
+import sobaya.lib.randomdog.RandomDogScreenRout
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MyApplicationTheme {
+            val navController = rememberNavController()
+            SampleTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    val viewModel: MainActivityViewModel = getViewModel()
-                    Greeting(viewModel.state)
+                    NavHost(navController = navController, startDestination = "menuScreeen") {
+                        composable("randomDog") {
+                            RandomDogScreenRout(
+                                navController = navController,
+                                viewModel = get(),
+                                modifier = Modifier
+                            )
+                        }
+                        composable("menuScreeen") {
+                            MenuScreenRoute(navController = navController)
+                        }
+                    }
                 }
             }
         }
@@ -81,14 +53,36 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(text: String) {
-    Text(text = text)
+internal fun MenuScreenRoute(
+    navController: NavController,
+    modifier: Modifier = Modifier
+) {
+    MenuScreen(
+        onClickRandomDog = {
+            navController.navigate("randomDog")
+        },
+        modifier = modifier
+    )
 }
 
-@Preview
 @Composable
-fun DefaultPreview() {
-    MyApplicationTheme {
-        Greeting("Hello, Android!")
+private fun MenuScreen(
+    onClickRandomDog: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Column(modifier = modifier) {
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+                .clickable {
+                    onClickRandomDog()
+                }
+        ) {
+            Text(
+                text = "RandomDog",
+                style = androidx.compose.material3.MaterialTheme.typography.titleMedium
+            )
+        }
     }
 }

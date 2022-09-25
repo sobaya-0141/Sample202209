@@ -54,9 +54,3 @@ class MainActivityViewModel(private val getRandomDogUseCase: GetRandomDogUseCase
         }.launchIn(viewModelScope)
     }
 }
-
-val viewModelModule = module {
-    viewModel {
-        MainActivityViewModel(get())
-    }
-}
