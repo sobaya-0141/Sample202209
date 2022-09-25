@@ -10,8 +10,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
-import org.koin.androidx.viewmodel.dsl.viewModel
-import org.koin.dsl.module
 import sobaya.app.data.dogApi.response.RandomDogResponse
 import sobaya.app.usecase.GetRandomDogUseCase
 import sobaya.app.util.Result
