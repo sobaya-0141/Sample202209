@@ -1,0 +1,15 @@
+CREATE TABLE dog (
+  message TEXT,
+  status TEXT
+);
+
+selectDog:
+SELECT message, status
+FROM dog;
+
+insertDog:
+INSERT INTO dog(message, status)
+VALUES(?, ?);
+
+deleteDog:
+DELETE FROM dog;

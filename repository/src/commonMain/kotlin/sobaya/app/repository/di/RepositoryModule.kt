@@ -4,5 +4,5 @@ import org.koin.dsl.module
 import sobaya.app.repository.DogRepository
 
 val repositoryModule = module {
-    single { DogRepository(get()) }
+    single { DogRepository(get(), get()) }
 }

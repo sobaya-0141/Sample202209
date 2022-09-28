@@ -20,8 +20,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import org.koin.android.ext.android.get
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 import sobaya.app.sample202209.android.theme.SampleTheme
 import sobaya.lib.randomdog.RandomDogScreenRout
+import sobaya.lib.randomdog.detail.RandomDogDetailScreenRoute
+import sobaya.lib.randomdog.grid.RandomDogGridScreenRoute
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,16 +36,27 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    NavHost(navController = navController, startDestination = "menuScreeen") {
+                    NavHost(navController = navController, startDestination = "menu") {
                         composable("randomDog") {
                             RandomDogScreenRout(
                                 navController = navController,
-                                viewModel = get(),
-                                modifier = Modifier
+                                viewModel = getViewModel()
                             )
                         }
-                        composable("menuScreeen") {
+                        composable("menu") {
                             MenuScreenRoute(navController = navController)
+                        }
+                        composable("randomDogGrid") {
+                            RandomDogGridScreenRoute(
+                                navController = navController,
+                                viewModel = getViewModel()
+                            )
+                        }
+                        composable("randomDogDetail") {
+                            RandomDogDetailScreenRoute(
+                                viewModel = getViewModel(),
+                                navController = navController
+                            )
                         }
                     }
                 }
@@ -60,6 +74,9 @@ internal fun MenuScreenRoute(
         onClickRandomDog = {
             navController.navigate("randomDog")
         },
+        onClickRandomDogGrid = {
+            navController.navigate("randomDogGrid")
+        },
         modifier = modifier
     )
 }
@@ -67,6 +84,7 @@ internal fun MenuScreenRoute(
 @Composable
 private fun MenuScreen(
     onClickRandomDog: () -> Unit,
+    onClickRandomDogGrid: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier) {
@@ -80,6 +98,19 @@ private fun MenuScreen(
         ) {
             Text(
                 text = "RandomDog",
+                style = androidx.compose.material3.MaterialTheme.typography.titleMedium
+            )
+        }
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+                .clickable {
+                    onClickRandomDogGrid()
+                }
+        ) {
+            Text(
+                text = "RandomDogGrid",
                 style = androidx.compose.material3.MaterialTheme.typography.titleMedium
             )
         }

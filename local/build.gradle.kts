@@ -2,6 +2,7 @@ plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
+    id("com.squareup.sqldelight")
 }
 
 kotlin {
@@ -16,19 +17,14 @@ kotlin {
         version = "1.0"
         ios.deploymentTarget = "14.1"
         framework {
-            baseName = "repository"
+            baseName = "local"
         }
     }
-
+    
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(project(":network"))
-                implementation(project(":data"))
-                implementation(project(":local"))
                 implementation(libs.koin)
-                implementation(libs.coroutinesCore)
-                implementation(libs.sqldelightFlow)
             }
         }
         val commonTest by getting {
@@ -36,7 +32,11 @@ kotlin {
                 implementation(kotlin("test"))
             }
         }
-        val androidMain by getting
+        val androidMain by getting {
+            dependencies {
+                api(libs.sqldelightAndroid)
+            }
+        }
         val androidTest by getting
         val iosX64Main by getting
         val iosArm64Main by getting
@@ -60,9 +60,15 @@ kotlin {
 }
 
 android {
-    namespace = "sobaya.app.repository"
+    namespace = "sobaya.lib.local"
     compileSdk = 33
     defaultConfig {
         minSdk = 24
+    }
+}
+
+sqldelight {
+    database("AppDatabase") {
+        packageName = "sobaya.lib.local"
     }
 }

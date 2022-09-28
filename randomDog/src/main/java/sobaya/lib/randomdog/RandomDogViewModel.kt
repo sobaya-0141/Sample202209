@@ -13,7 +13,7 @@ class RandomDogViewModel(
 ) : ViewModel() {
     private val retryTrigger = RetryTrigger()
     val randomDog = retryableFlow(retryTrigger) {
-        getRandomDogUseCase()
+        getRandomDogUseCase(1)
     }.stateIn(viewModelScope, SharingStarted.Eagerly, sobaya.app.util.Result.Loading)
 
     fun fetchRandomDog() {

@@ -1,9 +1,7 @@
 package sobaya.app.data.dogApi.response
 
-import kotlinx.serialization.Serializable
-
-@Serializable
+@kotlinx.serialization.Serializable
 data class RandomDogResponse(
-    val message: String,
+    val message: List<String>,
     val status: String
 )

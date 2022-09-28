@@ -8,6 +8,6 @@ import sobaya.app.util.asResult
 class GetRandomDogUseCase(
     private val dogRepository: DogRepository
 ) {
-    operator fun invoke(): Flow<sobaya.app.util.Result<RandomDogResponse>> =
-        dogRepository.getRandomDog().asResult()
+    operator fun invoke(limit: Int): Flow<sobaya.app.util.Result<RandomDogResponse>> =
+        dogRepository.getRandomDog(limit).asResult()
 }

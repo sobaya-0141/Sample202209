@@ -26,6 +26,7 @@ kotlin {
                 implementation(project(":repository"))
                 implementation(project(":util"))
                 implementation(project(":data"))
+                implementation(project(":local"))
                 implementation(libs.koin)
                 implementation(libs.coroutinesCore)
             }

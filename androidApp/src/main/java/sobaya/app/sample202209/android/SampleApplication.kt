@@ -6,6 +6,7 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import sobaya.app.sample202209.android.di.viewModelModule
 import sobaya.app.sample202209.di.module
+import sobaya.lib.local.di.databaseModule
 
 class SampleApplication : Application() {
     override fun onCreate() {
@@ -14,7 +15,7 @@ class SampleApplication : Application() {
         startKoin {
             androidContext(this@SampleApplication)
             androidLogger()
-            modules(module + viewModelModule)
+            modules(module + viewModelModule + databaseModule)
         }
     }
 }

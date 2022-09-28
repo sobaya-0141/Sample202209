@@ -25,7 +25,7 @@ fun RandomDogScreenRout(
 }
 
 @Composable
-internal fun RandomDogScreen(
+private fun RandomDogScreen(
     state: State<Result<RandomDogResponse>>,
     onClickReload: () -> Unit,
     modifier: Modifier = Modifier
