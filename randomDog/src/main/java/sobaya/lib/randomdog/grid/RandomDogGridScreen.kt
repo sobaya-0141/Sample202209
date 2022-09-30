@@ -81,8 +81,9 @@ private fun RandomDogGridScreen(
                             .width(128.dp)
                             .height(128.dp)
                             .padding(4.dp)
-                            .ifTrue(false) {
+                            .ifTrue(!gridState.isScrollInProgress) {
                                 clickable {
+                                    gridState.isScrollInProgress
                                     onClickImage(message)
                                 }
                             }

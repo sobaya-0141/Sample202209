@@ -24,7 +24,7 @@ class SampleApplication : Application(), ImageLoaderFactory {
 
     override fun newImageLoader(): ImageLoader {
         val builder = ImageLoader.Builder(this)
-        builder.interceptorDispatcher(Dispatchers.IO)
+        builder.interceptorDispatcher(Dispatchers.Main)
 
         return builder.build()
     }
