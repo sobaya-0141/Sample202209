@@ -1,6 +1,9 @@
 package sobaya.app.sample202209.android
 
 import android.app.Application
+import coil.ImageLoader
+import coil.ImageLoaderFactory
+import kotlinx.coroutines.Dispatchers
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -8,7 +11,7 @@ import sobaya.app.sample202209.android.di.viewModelModule
 import sobaya.app.sample202209.di.module
 import sobaya.lib.local.di.databaseModule
 
-class SampleApplication : Application() {
+class SampleApplication : Application(), ImageLoaderFactory {
     override fun onCreate() {
         super.onCreate()
 
@@ -17,5 +20,12 @@ class SampleApplication : Application() {
             androidLogger()
             modules(module + viewModelModule + databaseModule)
         }
+    }
+
+    override fun newImageLoader(): ImageLoader {
+        val builder = ImageLoader.Builder(this)
+        builder.interceptorDispatcher(Dispatchers.IO)
+
+        return builder.build()
     }
 }

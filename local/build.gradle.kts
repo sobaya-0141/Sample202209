@@ -20,7 +20,7 @@ kotlin {
             baseName = "local"
         }
     }
-    
+
     sourceSets {
         val commonMain by getting {
             dependencies {

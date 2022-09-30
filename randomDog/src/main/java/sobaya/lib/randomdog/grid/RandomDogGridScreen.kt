@@ -1,32 +1,24 @@
 package sobaya.lib.randomdog.grid
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
-import coil.compose.SubcomposeAsyncImage
 import sobaya.app.data.dogApi.response.RandomDogResponse
 import sobaya.app.util.Result
 import sobaya.app.util.ifTrue
@@ -60,16 +52,16 @@ private fun RandomDogGridScreen(
     onClickImage: (message: String) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val state = uiState.value
-    when (state) {
-        Result.Loading -> {
+    val gridState = rememberLazyGridState()
 
+    when (val state = uiState.value) {
+        Result.Loading -> {
         }
         is Result.Error -> {
-
         }
         is Result.Success -> {
             LazyVerticalGrid(
+                state = gridState,
                 columns = GridCells.Fixed(3),
                 modifier = modifier.fillMaxSize(),
                 contentPadding = PaddingValues(
@@ -85,7 +77,7 @@ private fun RandomDogGridScreen(
                     AsyncImage(
                         model = message,
                         contentDescription = "dog",
-                        Modifier
+                        modifier = Modifier
                             .width(128.dp)
                             .height(128.dp)
                             .padding(4.dp)

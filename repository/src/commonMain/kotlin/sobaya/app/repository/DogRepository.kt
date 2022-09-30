@@ -3,7 +3,6 @@ package sobaya.app.repository
 import com.squareup.sqldelight.runtime.coroutines.asFlow
 import com.squareup.sqldelight.runtime.coroutines.mapToList
 import kotlinx.coroutines.flow.Flow
-import org.koin.core.logger.MESSAGE
 import sobaya.app.data.dogApi.response.RandomDogResponse
 import sobaya.app.network.service.DogApi
 import sobaya.lib.local.AppDatabase
