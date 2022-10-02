@@ -7,7 +7,6 @@ import kotlinx.coroutines.Dispatchers
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
-import sobaya.app.features.randomDog.di.viewModelModule
 import sobaya.app.sample202209.di.module
 import sobaya.lib.local.di.databaseModule
 

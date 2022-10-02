@@ -19,7 +19,7 @@ kotlin {
             baseName = "features"
         }
     }
-    
+
     sourceSets {
         val commonMain by getting {
             dependencies {

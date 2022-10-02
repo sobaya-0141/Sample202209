@@ -4,15 +4,13 @@ import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 import sobaya.app.data.dogApi.response.RandomDogResponse
 import sobaya.app.usecase.DeleteInsertDogUseCase
 import sobaya.app.usecase.GetRandomDogUseCase
+import sobaya.app.util.Result
 import sobaya.app.util.RetryTrigger
 import sobaya.app.util.retryableFlow
-import sobaya.app.util.Result
 
 class RandomDogGridViewModel(
     private val getRandomDogUseCase: GetRandomDogUseCase,
