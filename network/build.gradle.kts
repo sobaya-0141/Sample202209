@@ -29,6 +29,7 @@ kotlin {
                 implementation(libs.koin)
                 implementation(libs.ktorNegotiation)
                 implementation(libs.ktorSerialization)
+                implementation(libs.ktorLogging)
             }
         }
         val commonTest by getting {

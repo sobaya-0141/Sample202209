@@ -103,6 +103,8 @@ mvvmCore = { module = "dev.icerock.moko:mvvm-core", version.ref = "mvvm" }
 mvvmFlow = { module = "dev.icerock.moko:mvvm-flow", version.ref = "mvvm" }
 mvvmState = { module = "dev.icerock.moko:mvvm-state", version.ref = "mvvm" }
 mvvmFlowResource = { module = "dev.icerock.moko:mvvm-flow-resources", version.ref = "mvvm" }
+mvvmFlowCompose = { module = "dev.icerock.moko:mvvm-flow-compose", version.ref = "mvvm" }
+ktorLogging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 
 [bundles]
 paging = ["paging", "paging-compose"]

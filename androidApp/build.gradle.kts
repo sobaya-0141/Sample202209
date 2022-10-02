@@ -47,6 +47,7 @@ dependencies {
     implementation(project(":util"))
     implementation(project(":randomDog"))
     implementation(project(":local"))
+    implementation(project(":features"))
 
     implementation(libs.core.ktx)
     implementation(libs.material)

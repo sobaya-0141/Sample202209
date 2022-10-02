@@ -1,10 +1,8 @@
-package sobaya.lib.randomdog.detail
+package sobaya.app.randomdog.detail
 
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import dev.icerock.moko.mvvm.viewmodel.ViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import sobaya.app.usecase.SelectDogUseCase
@@ -12,12 +10,12 @@ import sobaya.app.usecase.SelectDogUseCase
 class RandomDogDetailViewModel(
     private val selectDogUseCase: SelectDogUseCase
 ) : ViewModel() {
-    var uiState by mutableStateOf(RandomDogDetailUiState.initialState())
-        private set
+    private val _uiState = MutableStateFlow(RandomDogDetailUiState.initialState())
+    val uiState: StateFlow<RandomDogDetailUiState> = _uiState
 
     init {
         selectDogUseCase().onEach { dogs ->
-            uiState = uiState.copy(message = dogs.getOrNull(0)?.message)
+            _uiState.value = uiState.value.copy(message = dogs.getOrNull(0)?.message)
         }.launchIn(viewModelScope)
     }
 }

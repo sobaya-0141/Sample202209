@@ -21,13 +21,27 @@ kotlin {
     }
     
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies {
+                implementation(project(":usecase"))
+                implementation(project(":util"))
+                implementation(project(":data"))
+                implementation(project(":local"))
+                implementation(libs.koin)
+                api(libs.bundles.mvvm)
+                implementation(libs.coroutinesCore)
+            }
+        }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
             }
         }
-        val androidMain by getting
+        val androidMain by getting {
+            dependencies {
+                api(libs.mvvmFlowCompose)
+            }
+        }
         val androidTest by getting
         val iosX64Main by getting
         val iosArm64Main by getting
@@ -52,9 +66,8 @@ kotlin {
 
 android {
     namespace = "sobaya.app.features"
-    compileSdk = 32
+    compileSdk = 33
     defaultConfig {
         minSdk = 24
-        targetSdk = 32
     }
 }

@@ -1,7 +1,6 @@
-package sobaya.lib.randomdog
+package sobaya.app.features.randomDog
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import sobaya.app.usecase.GetRandomDogUseCase
