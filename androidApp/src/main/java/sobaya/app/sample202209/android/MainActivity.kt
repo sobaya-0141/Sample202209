@@ -20,6 +20,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import org.koin.android.ext.android.get
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 import sobaya.app.sample202209.android.theme.SampleTheme
 import sobaya.lib.randomdog.RandomDogScreenRout
 import sobaya.lib.randomdog.detail.RandomDogDetailScreenRoute
@@ -39,7 +40,7 @@ class MainActivity : ComponentActivity() {
                         composable("randomDog") {
                             RandomDogScreenRout(
                                 navController = navController,
-                                viewModel = get()
+                                viewModel = getViewModel()
                             )
                         }
                         composable("menu") {
@@ -48,12 +49,12 @@ class MainActivity : ComponentActivity() {
                         composable("randomDogGrid") {
                             RandomDogGridScreenRoute(
                                 navController = navController,
-                                viewModel = get()
+                                viewModel = getViewModel()
                             )
                         }
                         composable("randomDogDetail") {
                             RandomDogDetailScreenRoute(
-                                viewModel = get(),
+                                viewModel = getViewModel(),
                                 navController = navController
                             )
                         }

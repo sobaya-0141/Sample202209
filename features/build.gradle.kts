@@ -40,6 +40,7 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 api(libs.mvvmFlowCompose)
+                implementation(libs.koinAndroid)
             }
         }
         val androidTest by getting
