@@ -27,6 +27,7 @@ kotlin {
                 implementation(project(":repository"))
                 implementation(project(":network"))
                 implementation(project(":usecase"))
+                implementation(project(":features"))
                 implementation("io.insert-koin:koin-core:3.2.2")
             }
         }

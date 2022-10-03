@@ -2,7 +2,6 @@ plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
-    id("com.google.devtools.ksp") version "1.7.10-1.0.6"
 }
 
 kotlin {
@@ -17,19 +16,20 @@ kotlin {
         version = "1.0"
         ios.deploymentTarget = "14.1"
         framework {
-            baseName = "network"
+            baseName = "features"
         }
     }
 
     sourceSets {
         val commonMain by getting {
             dependencies {
+                implementation(project(":usecase"))
+                implementation(project(":util"))
                 implementation(project(":data"))
-                implementation(libs.ktorFitLib)
+                implementation(project(":local"))
                 implementation(libs.koin)
-                implementation(libs.ktorNegotiation)
-                implementation(libs.ktorSerialization)
-                implementation(libs.ktorLogging)
+                api(libs.bundles.mvvm)
+                implementation(libs.coroutinesCore)
             }
         }
         val commonTest by getting {
@@ -37,7 +37,12 @@ kotlin {
                 implementation(kotlin("test"))
             }
         }
-        val androidMain by getting
+        val androidMain by getting {
+            dependencies {
+                api(libs.mvvmFlowCompose)
+                implementation(libs.koinAndroid)
+            }
+        }
         val androidTest by getting
         val iosX64Main by getting
         val iosArm64Main by getting
@@ -61,14 +66,12 @@ kotlin {
 }
 
 android {
-    namespace = "sobaya.app.network"
+    namespace = "sobaya.app.features"
     compileSdk = 33
     defaultConfig {
         minSdk = 24
     }
-}
-
-dependencies {
-    add("kspCommonMainMetadata", libs.kspCommonMainMetadata)
-    add("kspAndroid", libs.kspAndroid)
+    lint {
+        disable.add("DialogFragmentCallbacksDetector")
+    }
 }

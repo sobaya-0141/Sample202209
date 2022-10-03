@@ -1,22 +1,26 @@
 package sobaya.lib.randomdog
 
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.State
-import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import sobaya.app.data.dogApi.response.RandomDogResponse
+import sobaya.app.features.randomDog.RandomDogViewModel
 import sobaya.app.util.Result
 
+@OptIn(ExperimentalLifecycleComposeApi::class)
 @Composable
 fun RandomDogScreenRout(
     navController: NavController,
     viewModel: RandomDogViewModel,
     modifier: Modifier = Modifier
 ) {
-    val state: State<Result<RandomDogResponse>> = viewModel.randomDog.collectAsState()
+    val state by viewModel.randomDog.collectAsStateWithLifecycle()
     RandomDogScreen(
         state = state,
         onClickReload = viewModel::fetchRandomDog,
@@ -26,22 +30,23 @@ fun RandomDogScreenRout(
 
 @Composable
 private fun RandomDogScreen(
-    state: State<Result<RandomDogResponse>>,
+    state: Result<RandomDogResponse>,
     onClickReload: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    when (val result = state.value) {
+    when (state) {
         Result.Loading -> {
             Text("Loading")
         }
         is Result.Success -> {
             AsyncImage(
-                model = result.data.message,
-                contentDescription = "dog"
+                model = state.data.message,
+                contentDescription = "dog",
+                modifier = modifier.fillMaxSize()
             )
         }
-        is sobaya.app.util.Result.Error -> {
-            Text(result.exception?.message ?: "")
+        is Result.Error -> {
+            Text(state.exception?.message ?: "")
         }
     }
 }
