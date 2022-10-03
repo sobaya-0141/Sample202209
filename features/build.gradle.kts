@@ -71,4 +71,7 @@ android {
     defaultConfig {
         minSdk = 24
     }
+    lint {
+        disable.add("DialogFragmentCallbacksDetector")
+    }
 }
