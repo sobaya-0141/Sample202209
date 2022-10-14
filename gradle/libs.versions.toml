@@ -34,6 +34,10 @@ fireBaseBom = "30.5.0"
 googleService = "4.3.14"
 material3 = "1.0.0-beta03"
 sqldelight = "1.5.3"
+showkase = "1.0.0-beta13"
+testParameterInjector = "1.8"
+paparazzi = "1.1.0"
+ksp = "1.7.10-1.0.6"
 
 [libraries]
 kotlinxCoroutinesAndroid = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref ="coroutine" }
@@ -98,6 +102,9 @@ googleService = { module = "com.google.gms:google-services", version.ref = "goog
 sqldelight = { module = "com.squareup.sqldelight:gradle-plugin", version.ref = "sqldelight" }
 sqldelightFlow = { module = "com.squareup.sqldelight:coroutines-extensions", version.ref = "sqldelight" }
 sqldelightAndroid = { module = "com.squareup.sqldelight:android-driver", version.ref = "sqldelight" }
+showkase = { module = "com.airbnb.android:showkase", version.ref = "showkase" }
+showkaseProcessor = { module = "com.airbnb.android:showkase-processor", version.ref = "showkase" }
+testParameterInjector = { module = "com.google.testparameterinjector:test-parameter-injector", version.ref = "testParameterInjector" }
 
 [bundles]
 paging = ["paging", "paging-compose"]
@@ -111,3 +118,7 @@ compose-navigastion = ["navigation-compose", "hilt-navigation-compose"]
 room = ["room-ktx", "room-runtime"]
 accompanist-pager = ["accompanist-pager", "accompanist-pager-indicators"]
 ktor = ["ktorCore", "ktorJson", "ktorSerialization", "ktorNegotiation"]
+
+[plugins]
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+paparazzi = { id = "app.cash.paparazzi", version.ref = "paparazzi" }
