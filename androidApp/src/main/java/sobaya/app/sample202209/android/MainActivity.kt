@@ -88,19 +88,19 @@ private fun MenuScreen(
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier) {
-        Card(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp)
-                .clickable {
-                    onClickRandomDog()
-                }
-        ) {
-            Text(
-                text = "RandomDog",
-                style = androidx.compose.material3.MaterialTheme.typography.titleMedium
-            )
-        }
+//        Card(
+//            modifier = Modifier
+//                .fillMaxWidth()
+//                .padding(horizontal = 16.dp)
+//                .clickable {
+//                    onClickRandomDog()
+//                }
+//        ) {
+//            Text(
+//                text = "RandomDog",
+//                style = androidx.compose.material3.MaterialTheme.typography.titleMedium
+//            )
+//        }
         Card(
             modifier = Modifier
                 .fillMaxWidth()

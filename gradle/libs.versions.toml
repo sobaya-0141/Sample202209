@@ -34,6 +34,7 @@ fireBaseBom = "30.5.0"
 googleService = "4.3.14"
 material3 = "1.0.0-beta03"
 sqldelight = "1.5.3"
+mvvm = "0.14.0"
 showkase = "1.0.0-beta13"
 testParameterInjector = "1.8"
 paparazzi = "1.1.0"
@@ -105,6 +106,12 @@ sqldelightAndroid = { module = "com.squareup.sqldelight:android-driver", version
 showkase = { module = "com.airbnb.android:showkase", version.ref = "showkase" }
 showkaseProcessor = { module = "com.airbnb.android:showkase-processor", version.ref = "showkase" }
 testParameterInjector = { module = "com.google.testparameterinjector:test-parameter-injector", version.ref = "testParameterInjector" }
+mvvmCore = { module = "dev.icerock.moko:mvvm-core", version.ref = "mvvm" }
+mvvmFlow = { module = "dev.icerock.moko:mvvm-flow", version.ref = "mvvm" }
+mvvmState = { module = "dev.icerock.moko:mvvm-state", version.ref = "mvvm" }
+mvvmFlowResource = { module = "dev.icerock.moko:mvvm-flow-resources", version.ref = "mvvm" }
+mvvmFlowCompose = { module = "dev.icerock.moko:mvvm-flow-compose", version.ref = "mvvm" }
+ktorLogging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 
 [bundles]
 paging = ["paging", "paging-compose"]
@@ -118,6 +125,7 @@ compose-navigastion = ["navigation-compose", "hilt-navigation-compose"]
 room = ["room-ktx", "room-runtime"]
 accompanist-pager = ["accompanist-pager", "accompanist-pager-indicators"]
 ktor = ["ktorCore", "ktorJson", "ktorSerialization", "ktorNegotiation"]
+mvvm = ["mvvmCore", "mvvmFlow", "mvvmState", "mvvmFlowResource"]
 
 [plugins]
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

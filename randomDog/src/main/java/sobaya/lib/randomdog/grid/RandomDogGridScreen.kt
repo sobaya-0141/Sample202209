@@ -12,7 +12,7 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.State
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
@@ -20,6 +20,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import sobaya.app.data.dogApi.response.RandomDogResponse
+import sobaya.app.features.randomDog.grid.RandomDogGridViewModel
 import sobaya.app.util.Result
 import sobaya.app.util.ifTrue
 
@@ -30,7 +31,8 @@ fun RandomDogGridScreenRoute(
     viewModel: RandomDogGridViewModel,
     modifier: Modifier = Modifier
 ) {
-    val uiState: State<Result<RandomDogResponse>> = viewModel.randomDog.collectAsStateWithLifecycle()
+    val uiState by viewModel.randomDog.collectAsStateWithLifecycle()
+    val isDataCreated by viewModel.isDataCreated.collectAsStateWithLifecycle()
 
     RandomDogGridScreen(
         uiState = uiState,
@@ -38,8 +40,10 @@ fun RandomDogGridScreenRoute(
         modifier = modifier
     )
 
-    LaunchedEffect(viewModel.isDataCreated) {
-        viewModel.isDataCreated?.let {
+    LaunchedEffect(
+        isDataCreated
+    ) {
+        viewModel.isDataCreated.value?.let {
             viewModel.setIsDataCreated(null)
             navController.navigate("randomDogDetail")
         }
@@ -48,13 +52,13 @@ fun RandomDogGridScreenRoute(
 
 @Composable
 private fun RandomDogGridScreen(
-    uiState: State<Result<RandomDogResponse>>,
+    uiState: Result<RandomDogResponse>,
     onClickImage: (message: String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val gridState = rememberLazyGridState()
 
-    when (val state = uiState.value) {
+    when (uiState) {
         Result.Loading -> {
         }
         is Result.Error -> {
@@ -72,7 +76,7 @@ private fun RandomDogGridScreen(
                 )
             ) {
                 items(
-                    items = state.data.message
+                    items = uiState.data.message
                 ) { message ->
                     AsyncImage(
                         model = message,
@@ -83,7 +87,6 @@ private fun RandomDogGridScreen(
                             .padding(4.dp)
                             .ifTrue(!gridState.isScrollInProgress) {
                                 clickable {
-                                    gridState.isScrollInProgress
                                     onClickImage(message)
                                 }
                             }

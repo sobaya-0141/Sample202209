@@ -1,10 +1,7 @@
-package sobaya.lib.randomdog.grid
+package sobaya.app.features.randomDog.grid
 
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import dev.icerock.moko.mvvm.viewmodel.ViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
@@ -24,16 +21,16 @@ class RandomDogGridViewModel(
         getRandomDogUseCase(LIMIT_DOG_COUNT)
     }.stateIn(viewModelScope, SharingStarted.Eagerly, Result.Loading)
 
-    var isDataCreated by mutableStateOf<String?>(null)
-        private set
+    private val _isDataCreated = MutableStateFlow<String?>(null)
+    val isDataCreated: StateFlow<String?> = _isDataCreated
 
     fun onClickDog(message: String) {
         deleteInsertDogUseCase(message, "success")
-        isDataCreated = message
+        _isDataCreated.value = message
     }
 
     fun setIsDataCreated(message: String?) {
-        isDataCreated = message
+        _isDataCreated.value = message
     }
 
     fun fetchRandomDog() {

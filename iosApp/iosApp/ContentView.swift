@@ -2,10 +2,12 @@ import SwiftUI
 import shared
 
 struct ContentView: View {
-	let greet = ""
+    let dogs = GetRandomDogUseCaseHelper().getRandomDogUseCase()
 
 	var body: some View {
-		Text(greet)
+        ForEach(dogs) { dog in
+            Text(dog)
+        }
 	}
 }
 

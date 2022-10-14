@@ -46,6 +46,7 @@ dependencies {
     implementation(project(":usecase"))
     implementation(project(":util"))
     implementation(project(":local"))
+    implementation(project(":features"))
 
     implementation(libs.core.ktx)
     implementation(libs.material)
