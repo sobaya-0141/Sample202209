@@ -2,10 +2,11 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     alias(libs.plugins.ksp)
+    alias(libs.plugins.paparazzi)
 }
 
 android {
-    namespace = "sobaya.lib.randomdog"
+    namespace = "sobaya.app.screenshotTest"
     compileSdk = 33
 
     defaultConfig {
@@ -14,12 +15,7 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.3.0"
-    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -36,32 +32,28 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    lint {
-        disable.add("DialogFragmentCallbacksDetector")
+}
+
+androidComponents {
+    beforeVariants(selector().withBuildType("release")) { builder ->
+        builder.enable = false
     }
 }
 
 dependencies {
-    implementation(project(":data"))
-    implementation(project(":usecase"))
-    implementation(project(":util"))
-    implementation(project(":local"))
-    implementation(project(":features"))
-
-    implementation(libs.core.ktx)
-    implementation(libs.material)
-    implementation(libs.appcompat)
-    implementation(libs.kotlinxCoroutinesAndroid)
     implementation(libs.bundles.compose)
-    implementation(libs.bundles.lifecycleCompose)
-    implementation(libs.coil.compose)
-    implementation(libs.bundles.accompanist.pager)
-    implementation(libs.bundles.compose.navigastion)
-    implementation(libs.koinAndroid)
-
     implementation(libs.showkase)
     ksp(libs.showkaseProcessor)
 
     testImplementation(libs.junit)
-    androidTestImplementation(libs.bundles.android.test)
+    testImplementation(libs.testParameterInjector)
+}
+
+tasks.named("check") {
+    dependsOn("verifyPaparazziDemoDebug")
+}
+
+tasks.withType<Test>().configureEach {
+    // Increase memory for Paparazzi tests
+    maxHeapSize = "2g"
 }

@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     id("com.google.gms.google-services")
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -58,8 +59,10 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.bundles.accompanist.pager)
     implementation(libs.bundles.compose.navigastion)
-
     implementation(libs.koinAndroid)
+
+    implementation(libs.showkase)
+    ksp(libs.showkaseProcessor)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.bundles.android.test)

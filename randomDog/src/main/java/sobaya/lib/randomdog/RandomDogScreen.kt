@@ -5,6 +5,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
@@ -49,4 +50,13 @@ private fun RandomDogScreen(
             Text(state.exception?.message ?: "")
         }
     }
+}
+
+@Composable
+@Preview
+fun RandomDogScreenPreview() {
+    RandomDogScreen(
+        state = Result.Loading,
+        onClickReload = {}
+    )
 }
