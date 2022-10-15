@@ -36,7 +36,7 @@ fun RandomDogGridScreenRoute(
 
     RandomDogGridScreen(
         uiState = uiState,
-        onClickImage = viewModel::onClickDog,
+        events = RandomDogGridScreenEvents(viewModel::onClickDog),
         modifier = modifier
     )
 
@@ -50,10 +50,14 @@ fun RandomDogGridScreenRoute(
     }
 }
 
+data class RandomDogGridScreenEvents(
+    val onClickImage: (message: String) -> Unit
+)
+
 @Composable
 private fun RandomDogGridScreen(
     uiState: Result<RandomDogResponse>,
-    onClickImage: (message: String) -> Unit,
+    events: RandomDogGridScreenEvents,
     modifier: Modifier = Modifier
 ) {
     val gridState = rememberLazyGridState()
@@ -87,7 +91,7 @@ private fun RandomDogGridScreen(
                             .padding(4.dp)
                             .ifTrue(!gridState.isScrollInProgress) {
                                 clickable {
-                                    onClickImage(message)
+                                    events.onClickImage(message)
                                 }
                             }
                     )
