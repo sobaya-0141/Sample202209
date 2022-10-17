@@ -10,8 +10,3 @@ actual fun platformModule() = module {
     single { RandomDogGridViewModel(get(), get()) }
     single { RandomDogDetailViewModel(get()) }
 }
-
-object ViewModels : KoinComponent {
-    fun getRandomDogGridViewModel() = get<RandomDogGridViewModel>()
-    fun getRandomDogDetailViewModel() = get<RandomDogDetailViewModel>()
-}
