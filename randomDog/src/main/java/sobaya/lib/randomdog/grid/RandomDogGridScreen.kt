@@ -19,10 +19,10 @@ import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
-import sobaya.app.data.dogApi.response.RandomDogResponse
-import sobaya.app.features.randomDog.grid.RandomDogGridViewModel
-import sobaya.app.util.Result
-import sobaya.app.util.ifTrue
+import sobaya.app.sample202209.data.dogApi.response.RandomDogResponse
+import sobaya.app.sample202209.features.randomDog.grid.RandomDogGridViewModel
+import sobaya.app.sample202209.util.Result
+import sobaya.app.sample202209.util.ifTrue
 
 @OptIn(ExperimentalLifecycleComposeApi::class)
 @Composable
@@ -56,7 +56,7 @@ data class RandomDogGridScreenEvents(
 
 @Composable
 private fun RandomDogGridScreen(
-    uiState: Result<RandomDogResponse>,
+    uiState: sobaya.app.sample202209.util.Result<RandomDogResponse>,
     events: RandomDogGridScreenEvents,
     modifier: Modifier = Modifier
 ) {

@@ -1,14 +1,28 @@
+import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
+
 plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
+    kotlin("plugin.serialization") version "1.7.10"
+    id("org.jlleitschuh.gradle.ktlint")
+    id("com.squareup.sqldelight")
+    id("com.google.devtools.ksp") version "1.7.10-1.0.6"
 }
 
 kotlin {
+    val xcf = XCFramework()
     android()
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach {
+        it.binaries.framework {
+            baseName = "shared"
+            xcf.add(this)
+        }
+    }
 
     cocoapods {
         summary = "Some description for the Shared Module"
@@ -24,11 +38,16 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(project(":repository"))
-                implementation(project(":network"))
-                implementation(project(":usecase"))
-                implementation(project(":features"))
-                implementation("io.insert-koin:koin-core:3.2.2")
+                implementation(libs.koin)
+                implementation(libs.coroutinesCore)
+                implementation(libs.sqldelightFlow)
+                implementation(libs.kotlinxSerializationJson)
+                api(libs.bundles.mvvm)
+                implementation(libs.coroutinesCore)
+                implementation(libs.ktorNegotiation)
+                implementation(libs.ktorSerialization)
+                implementation(libs.ktorLogging)
+                implementation(libs.ktorFitLib)
             }
         }
         val commonTest by getting {
@@ -36,7 +55,14 @@ kotlin {
                 implementation(kotlin("test"))
             }
         }
-        val androidMain by getting
+        val androidMain by getting {
+            dependencies {
+                implementation(libs.composeUi)
+                api(libs.mvvmFlowCompose)
+                api(libs.sqldelightAndroid)
+                implementation(libs.koinAndroid)
+            }
+        }
         val androidTest by getting
         val iosX64Main by getting
         val iosArm64Main by getting
@@ -65,4 +91,15 @@ android {
     defaultConfig {
         minSdk = 24
     }
+}
+
+sqldelight {
+    database("AppDatabase") {
+        packageName = "sobaya.lib.local"
+    }
+}
+
+dependencies {
+    add("kspCommonMainMetadata", libs.kspCommonMainMetadata)
+    add("kspAndroid", libs.kspAndroid)
 }

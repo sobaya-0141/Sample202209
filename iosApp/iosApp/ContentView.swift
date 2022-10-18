@@ -2,21 +2,29 @@ import SwiftUI
 import shared
 
 struct ContentView: View {
-    @ObservedObject var viewmodel = ViewModels().getRandomDogGridViewModel().asObserveableObject()
-    
+
+    var viewmodels = ViewModels()
+    var randomDogGridViewModel = viewmodels.getRandomDogGridViewModel()
+    @ObservedObject var viewmodel = randomDogGridViewModel.asObservableObject()
+
 	var body: some View {
-        let columns: [GridItem] = Array(
-            repeating: .init(.flexible()
-        ), count: 3)
-        
-        LazyVGrid(columns: columns){
-            AsyncImage(url: imageUrl) { image in
-                image.resizable()
-            } placeholder: {
-                ProgressView()
-            }
-            .frame(width: 240, height: 126)
-        }
+        let state = viewmodel.randomDog
+//         if let success = state as? ResultSuccess {
+//             let columns: [GridItem] = Array(
+//                 repeating: .init(.flexible()
+//             ), count: 3)
+//             success.data.forEach {
+//                 LazyVGrid(columns: columns){
+//                     AsyncImage(url: $0) { image in
+//                         image.resizable()
+//                     } placeholder: {
+//                         ProgressView()
+//                     }
+//                     .frame(width: 240, height: 126)
+//                 }
+//             }
+//         }
+
 	}
 }
 

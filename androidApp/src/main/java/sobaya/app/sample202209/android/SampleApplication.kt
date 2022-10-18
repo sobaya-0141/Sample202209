@@ -8,7 +8,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import sobaya.app.sample202209.di.module
-import sobaya.lib.local.di.databaseModule
+import sobaya.app.sample202209.local.databaseModule
 
 class SampleApplication : Application(), ImageLoaderFactory {
     override fun onCreate() {

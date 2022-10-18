@@ -25,11 +25,11 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(project(":data"))
-                implementation(libs.ktorFitLib)
                 implementation(libs.koin)
                 implementation(libs.ktorNegotiation)
                 implementation(libs.ktorSerialization)
                 implementation(libs.ktorLogging)
+                implementation(libs.ktorFitLib)
             }
         }
         val commonTest by getting {

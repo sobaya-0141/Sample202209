@@ -41,11 +41,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":data"))
-    implementation(project(":usecase"))
-    implementation(project(":util"))
-    implementation(project(":local"))
-    implementation(project(":features"))
+    implementation(project(":shared"))
 
     implementation(libs.core.ktx)
     implementation(libs.material)

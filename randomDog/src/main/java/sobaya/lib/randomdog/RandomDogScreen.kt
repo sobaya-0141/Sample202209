@@ -9,9 +9,9 @@ import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
-import sobaya.app.data.dogApi.response.RandomDogResponse
-import sobaya.app.features.randomDog.RandomDogViewModel
-import sobaya.app.util.Result
+import sobaya.app.sample202209.data.dogApi.response.RandomDogResponse
+import sobaya.app.sample202209.features.randomDog.RandomDogViewModel
+import sobaya.app.sample202209.util.Result
 
 @OptIn(ExperimentalLifecycleComposeApi::class)
 @Composable
