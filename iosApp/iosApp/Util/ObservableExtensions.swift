@@ -3,8 +3,6 @@ import Foundation
 
 import shared
 
-
-
 public extension FeaturesRandomDogGridViewModel {
 
     func asObservableObject() -> FeaturesRandomDogGridViewModel{

@@ -3,12 +3,35 @@ import shared
 
 struct ContentView: View {
 
-    var viewmodels = ViewModels()
-    var randomDogGridViewModel = viewmodels.getRandomDogGridViewModel()
-    @ObservedObject var viewmodel = randomDogGridViewModel.asObservableObject()
+    @ObservedObject var viewmodel = ViewModels().getRandomDogGridViewModel().asObserveableObject()
 
-	var body: some View {
-        let state = viewmodel.randomDog
+    var body: some View {
+        let state = viewmodel.state
+        if state.isSuccess == true {
+            let columns: [GridItem] = Array(
+                repeating: .init(.flexible()
+            ), count: 3)
+            ForEach(state.data!.message, id: \.self) { url in
+                LazyVGrid(columns: columns){
+                    if #available(iOS 15.0, *) {
+                        AsyncImage(url: URL(string: url)) { image in
+                            image.resizable()
+                        } placeholder: {
+                            ProgressView()
+                        }
+                        .frame(width: 240, height: 126)
+                    } else {
+                        Text("VERSION")
+                    }
+                }
+            }
+        } else {
+            Text("TEST")
+        }
+
+    
+        
+//         let state = viewmodel.randomDog
 //         if let success = state as? ResultSuccess {
 //             let columns: [GridItem] = Array(
 //                 repeating: .init(.flexible()
