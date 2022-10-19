@@ -12,6 +12,9 @@
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		704BCEF2C051F362F3BB0D89 /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849E8C9C856E17B5466A652B /* Pods_iosApp.framework */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
+		F5266F3F29000EDB0033C623 /* FlowPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5266F3E29000EDB0033C623 /* FlowPublisher.swift */; };
+		F5266F4129000F160033C623 /* ObservableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5266F4029000F160033C623 /* ObservableExtensions.swift */; };
+		F5266F4329000F500033C623 /* RandomDogGridViewModelObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5266F4229000F500033C623 /* RandomDogGridViewModelObservableObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82BA43A86FC42646EC5FC989 /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.release.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
 		849E8C9C856E17B5466A652B /* Pods_iosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5266F3E29000EDB0033C623 /* FlowPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowPublisher.swift; sourceTree = "<group>"; };
+		F5266F4029000F160033C623 /* ObservableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableExtensions.swift; sourceTree = "<group>"; };
+		F5266F4229000F500033C623 /* RandomDogGridViewModelObservableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomDogGridViewModelObservableObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +95,9 @@
 				7555FF8C242A565B00829871 /* Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
+				F5266F3E29000EDB0033C623 /* FlowPublisher.swift */,
+				F5266F4029000F160033C623 /* ObservableExtensions.swift */,
+				F5266F4229000F500033C623 /* RandomDogGridViewModelObservableObject.swift */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
@@ -189,7 +198,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5266F4329000F500033C623 /* RandomDogGridViewModelObservableObject.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
+				F5266F3F29000EDB0033C623 /* FlowPublisher.swift in Sources */,
+				F5266F4129000F160033C623 /* ObservableExtensions.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

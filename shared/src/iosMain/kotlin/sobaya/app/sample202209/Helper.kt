@@ -1,10 +1,7 @@
 package sobaya.app.sample202209
 
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.get
 import org.koin.core.context.startKoin
-import sobaya.app.features.randomDog.grid.RandomDogGridViewModel
-import sobaya.app.randomdog.detail.RandomDogDetailViewModel
+import sobaya.app.features.randomDog.grid.SwRandomDogGridState
 import sobaya.app.sample202209.di.module
 
 fun initKoin() {
@@ -13,7 +10,4 @@ fun initKoin() {
     }
 }
 
-object ViewModels : KoinComponent {
-    fun getRandomDogGridViewModel() = get<RandomDogGridViewModel>()
-    fun getRandomDogDetailViewModel() = get<RandomDogDetailViewModel>()
-}
+val randomDogGridState: SwRandomDogGridState = SwRandomDogGridState.initialState()
