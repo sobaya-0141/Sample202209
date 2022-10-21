@@ -87,8 +87,7 @@ ktorCore = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktorJson = { module = "io.ktor:ktor-client-json", version.ref ="ktor" }
 koin = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 koinAndroid = { module = "io.insert-koin:koin-android", version.ref = "koin" }
-kspCommonMainMetadata = { module = "de.jensklingenberg.ktorfit:ktorfit-ksp", version.ref = "ktorFit" }
-kspAndroid = { module = "de.jensklingenberg.ktorfit:ktorfit-ksp", version.ref = "ktorFit" }
+kspKtorfit = { module = "de.jensklingenberg.ktorfit:ktorfit-ksp", version.ref = "ktorFit" }
 kotlinxSerializationJson = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 ktorFitLib = { module = "de.jensklingenberg.ktorfit:ktorfit-lib", version.ref = "ktorFit" }
 ktorNegotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
@@ -99,6 +98,7 @@ googleService = { module = "com.google.gms:google-services", version.ref = "goog
 sqldelight = { module = "com.squareup.sqldelight:gradle-plugin", version.ref = "sqldelight" }
 sqldelightFlow = { module = "com.squareup.sqldelight:coroutines-extensions", version.ref = "sqldelight" }
 sqldelightAndroid = { module = "com.squareup.sqldelight:android-driver", version.ref = "sqldelight" }
+sqldelightNative = { module = "com.squareup.sqldelight:native-driver", version.ref = "sqldelight" }
 mvvmCore = { module = "dev.icerock.moko:mvvm-core", version.ref = "mvvm" }
 mvvmFlow = { module = "dev.icerock.moko:mvvm-flow", version.ref = "mvvm" }
 mvvmState = { module = "dev.icerock.moko:mvvm-state", version.ref = "mvvm" }

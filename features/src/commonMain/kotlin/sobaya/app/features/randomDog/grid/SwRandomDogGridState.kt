@@ -7,7 +7,10 @@ data class SwRandomDogGridState(
     val data: RandomDogResponse?
 ) {
     val isSuccess: Boolean
-        get() = error != null && data != null
+        get() = error == null && data != null
+
+    val isError: Boolean
+        get() = error != null
     companion object {
         fun initialState() = SwRandomDogGridState(
             error = null,

@@ -6,26 +6,31 @@ struct ContentView: View {
 
     var body: some View {
         let state = viewmodel.state
-        if state.isSuccess {
-            let columns: [GridItem] = Array(
-                repeating: .init(.flexible()
-            ), count: 3)
-            ForEach(state.data!.message, id:\.self) { url in
-                LazyVGrid(columns: columns){
-                    if #available(iOS 15.0, *) {
-                        AsyncImage(url: URL(string: url)) { image in
-                            image.resizable()
-                        } placeholder: {
-                            ProgressView()
+        switch true {
+            case state.isSuccess:
+                let columns: [GridItem] = Array(
+                    repeating: .init(.flexible()
+                ), count: 3)
+                ForEach(state.data!.message, id:\.self) { url in
+                    LazyVGrid(columns: columns){
+                        if #available(iOS 15.0, *) {
+                            AsyncImage(url: URL(string: url)) { image in
+                                image.resizable()
+                            } placeholder: {
+                                ProgressView()
+                            }
+                            .frame(width: 240, height: 126)
+                        } else {
+                            Text("VERSION")
                         }
-                        .frame(width: 240, height: 126)
-                    } else {
-                        Text("VERSION")
                     }
                 }
-            }
-        } else {
-            Text("TEST")
+            
+            case state.isError:
+                Text("ERROR")
+            
+            default:
+                Text("LOADING")
         }
     }
 }

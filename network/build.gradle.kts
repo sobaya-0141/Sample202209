@@ -69,6 +69,9 @@ android {
 }
 
 dependencies {
-    add("kspCommonMainMetadata", libs.kspCommonMainMetadata)
-    add("kspAndroid", libs.kspAndroid)
+    add("kspCommonMainMetadata", libs.kspKtorfit)
+    add("kspAndroid", libs.kspKtorfit)
+    add("kspIosX64", libs.kspKtorfit)
+    add("kspIosArm64", libs.kspKtorfit)
+    add("kspIosSimulatorArm64", libs.kspKtorfit)
 }

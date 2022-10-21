@@ -34,7 +34,7 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
-                api(libs.sqldelightAndroid)
+                implementation(libs.sqldelightAndroid)
             }
         }
         val androidTest by getting
@@ -46,6 +46,9 @@ kotlin {
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
             iosSimulatorArm64Main.dependsOn(this)
+            dependencies {
+                implementation(libs.sqldelightNative)
+            }
         }
         val iosX64Test by getting
         val iosArm64Test by getting
