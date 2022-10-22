@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "158900437910",
+    "project_id": "sample202209",
+    "storage_bucket": "sample202209.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158900437910:android:385acf23b5bc32902553b7",
+        "android_client_info": {
+          "package_name": "sobaya.app.sample202209.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158900437910-2ha9d8snl7m0qven5u630bmlphhde70v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZhDbV1yzRaEobxea1hAbJ03tssj_jOUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158900437910-2ha9d8snl7m0qven5u630bmlphhde70v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158900437910:android:15714b27f538274d2553b7",
+        "android_client_info": {
+          "package_name": "sobaya.app.sample202209.android.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158900437910-2ha9d8snl7m0qven5u630bmlphhde70v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZhDbV1yzRaEobxea1hAbJ03tssj_jOUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158900437910-2ha9d8snl7m0qven5u630bmlphhde70v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

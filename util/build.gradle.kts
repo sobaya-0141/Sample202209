@@ -2,6 +2,7 @@ plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
+    alias(libs.plugins.kswift)
 }
 
 kotlin {
@@ -24,6 +25,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(libs.coroutinesCore)
+                implementation(libs.kswift)
             }
         }
         val commonTest by getting {
@@ -64,4 +66,8 @@ android {
     defaultConfig {
         minSdk = 24
     }
+}
+
+kswift {
+    install(dev.icerock.moko.kswift.plugin.feature.SealedToSwiftEnumFeature)
 }
