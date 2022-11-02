@@ -45,7 +45,7 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":usecase"))
     implementation(project(":util"))
-    implementation(project(":randomDog"))
+    implementation(project(":androidFeatures"))
     implementation(project(":local"))
     implementation(project(":features"))
 
