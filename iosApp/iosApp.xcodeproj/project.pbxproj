@@ -12,10 +12,11 @@
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		704BCEF2C051F362F3BB0D89 /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849E8C9C856E17B5466A652B /* Pods_iosApp.framework */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
-		F5215FC829042D6900653E21 /* Sample202209_util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5215FC729042D6900653E21 /* Sample202209_util.swift */; };
+		F507C2582918DC15001CBE2B /* RandomDogGridViewModelObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F507C2572918DC15001CBE2B /* RandomDogGridViewModelObservableObject.swift */; };
+		F507C25A2918E5E7001CBE2B /* ResultKs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F507C2592918E5E7001CBE2B /* ResultKs.swift */; };
 		F5266F3F29000EDB0033C623 /* FlowPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5266F3E29000EDB0033C623 /* FlowPublisher.swift */; };
 		F5266F4129000F160033C623 /* ObservableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5266F4029000F160033C623 /* ObservableExtensions.swift */; };
-		F59ECA6C29063B6C002B24F5 /* RandomDogGridViewModelObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59ECA6B29063B6C002B24F5 /* RandomDogGridViewModelObservableObject.swift */; };
+		F59ECA6C29063B6C002B24F5 /* (null) in Sources */ = {isa = PBXBuildFile; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,10 +29,10 @@
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82BA43A86FC42646EC5FC989 /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.release.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
 		849E8C9C856E17B5466A652B /* Pods_iosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F5215FC729042D6900653E21 /* Sample202209_util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sample202209_util.swift; sourceTree = "<group>"; };
+		F507C2572918DC15001CBE2B /* RandomDogGridViewModelObservableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomDogGridViewModelObservableObject.swift; sourceTree = "<group>"; };
+		F507C2592918E5E7001CBE2B /* ResultKs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultKs.swift; sourceTree = "<group>"; };
 		F5266F3E29000EDB0033C623 /* FlowPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowPublisher.swift; sourceTree = "<group>"; };
 		F5266F4029000F160033C623 /* ObservableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableExtensions.swift; sourceTree = "<group>"; };
-		F59ECA6B29063B6C002B24F5 /* RandomDogGridViewModelObservableObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RandomDogGridViewModelObservableObject.swift; path = ../../../../../../Desktop/RandomDogGridViewModelObservableObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,9 +106,10 @@
 		F5215FC529042C5600653E21 /* util */ = {
 			isa = PBXGroup;
 			children = (
-				F5215FC729042D6900653E21 /* Sample202209_util.swift */,
 				F5266F3E29000EDB0033C623 /* FlowPublisher.swift */,
 				F5266F4029000F160033C623 /* ObservableExtensions.swift */,
+				F507C2572918DC15001CBE2B /* RandomDogGridViewModelObservableObject.swift */,
+				F507C2592918E5E7001CBE2B /* ResultKs.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -115,7 +117,6 @@
 		F5215FC629042C8B00653E21 /* feature */ = {
 			isa = PBXGroup;
 			children = (
-				F59ECA6B29063B6C002B24F5 /* RandomDogGridViewModelObservableObject.swift */,
 				7555FF82242A565900829871 /* ContentView.swift */,
 			);
 			path = feature;
@@ -218,10 +219,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
-				F5215FC829042D6900653E21 /* Sample202209_util.swift in Sources */,
 				F5266F3F29000EDB0033C623 /* FlowPublisher.swift in Sources */,
-				F59ECA6C29063B6C002B24F5 /* RandomDogGridViewModelObservableObject.swift in Sources */,
+				F59ECA6C29063B6C002B24F5 /* (null) in Sources */,
+				F507C2582918DC15001CBE2B /* RandomDogGridViewModelObservableObject.swift in Sources */,
 				F5266F4129000F160033C623 /* ObservableExtensions.swift in Sources */,
+				F507C25A2918E5E7001CBE2B /* ResultKs.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
