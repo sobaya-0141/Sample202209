@@ -37,6 +37,7 @@ sqldelight = "1.5.3"
 mvvm = "0.14.0"
 kswift = "0.6.0"
 ksp = "1.7.10-1.0.6"
+multiplatformPaging = "0.5.0"
 
 [libraries]
 kotlinxCoroutinesAndroid = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref ="coroutine" }
@@ -45,7 +46,7 @@ appcompat = { module = "androidx.appcompat:appcompat", version.ref ="appcompat" 
 material = { module = "com.google.android.material:material", version.ref ="material" }
 material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
 material3WindowSize = { module = "androidx.compose.material3:material3-window-size-class", version.ref = "material3" }
-paging = { module = "androidx.paging:paging-runtime", version.ref ="paging" }
+paging = { module = "androidx.paging:paging-runtime-ktx", version.ref ="paging" }
 paging-compose = { module = "androidx.paging:paging-compose", version.ref ="paging-compose" }
 compose-animation = { module = "androidx.compose.animation:animation", version.ref ="compose" }
 composeUi = { module = "androidx.compose.ui:ui", version.ref ="compose" }
@@ -108,6 +109,7 @@ mvvmFlowResource = { module = "dev.icerock.moko:mvvm-flow-resources", version.re
 mvvmFlowCompose = { module = "dev.icerock.moko:mvvm-flow-compose", version.ref = "mvvm" }
 ktorLogging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 kswift = { module = "dev.icerock.moko:kswift-runtime", version.ref = "kswift" }
+multiplatformPaging = { module = "io.github.kuuuurt:multiplatform-paging", version.ref = "multiplatformPaging" }
 
 [bundles]
 paging = ["paging", "paging-compose"]

@@ -17,6 +17,7 @@ kotlin {
         ios.deploymentTarget = "14.1"
         framework {
             baseName = "usecase"
+            export(libs.multiplatformPaging)
         }
     }
 
@@ -29,6 +30,7 @@ kotlin {
                 implementation(project(":local"))
                 implementation(libs.koin)
                 implementation(libs.coroutinesCore)
+                implementation(libs.multiplatformPaging)
             }
         }
         val commonTest by getting {

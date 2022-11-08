@@ -19,10 +19,10 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import org.koin.android.ext.android.get
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import sobaya.app.sample202209.android.theme.SampleTheme
 import sobaya.lib.randomdog.RandomDogScreenRout
+import sobaya.lib.randomdog.cat.SearchCatRoute
 import sobaya.lib.randomdog.detail.RandomDogDetailScreenRoute
 import sobaya.lib.randomdog.grid.RandomDogGridScreenRoute
 
@@ -58,6 +58,12 @@ class MainActivity : ComponentActivity() {
                                 navController = navController
                             )
                         }
+                        composable("searchCat") {
+                            SearchCatRoute(
+                                viewModel = getViewModel(),
+                                navController = navController
+                            )
+                        }
                     }
                 }
             }
@@ -65,26 +71,36 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+data class MenuActions(
+    val onClickRandomDog: () -> Unit,
+    val onClickRandomDogGrid: () -> Unit,
+    val onClickSearchCat: () -> Unit
+)
+
 @Composable
 internal fun MenuScreenRoute(
     navController: NavController,
     modifier: Modifier = Modifier
 ) {
     MenuScreen(
-        onClickRandomDog = {
-            navController.navigate("randomDog")
-        },
-        onClickRandomDogGrid = {
-            navController.navigate("randomDogGrid")
-        },
+        MenuActions(
+            onClickRandomDog = {
+                navController.navigate("randomDog")
+            },
+            onClickRandomDogGrid = {
+                navController.navigate("randomDogGrid")
+            },
+            onClickSearchCat = {
+                navController.navigate("searchCat")
+            }
+        ),
         modifier = modifier
     )
 }
 
 @Composable
 private fun MenuScreen(
-    onClickRandomDog: () -> Unit,
-    onClickRandomDogGrid: () -> Unit,
+    actions: MenuActions,
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier) {
@@ -106,11 +122,24 @@ private fun MenuScreen(
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp)
                 .clickable {
-                    onClickRandomDogGrid()
+                    actions.onClickRandomDogGrid()
                 }
         ) {
             Text(
                 text = "RandomDogGrid",
+                style = androidx.compose.material3.MaterialTheme.typography.titleMedium
+            )
+        }
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+                .clickable {
+                    actions.onClickSearchCat()
+                }
+        ) {
+            Text(
+                text = "ネコ",
                 style = androidx.compose.material3.MaterialTheme.typography.titleMedium
             )
         }
