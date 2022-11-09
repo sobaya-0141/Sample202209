@@ -1,8 +1,8 @@
 import SwiftUI
 import shared
 
-struct ContentView: View {
-    @ObservedObject var viewmodel = ViewModels().getRandomDogGridViewModel().asObserveableObject()
+struct SearchCatView: View {
+    @ObservedObject var viewmodel = ViewModels().getSearchCatViewModel().asObserveableObject()
 
     var body: some View {
         let state = ResultKs<DataRandomDogResponse>.init(viewmodel.state)
@@ -32,10 +32,4 @@ struct ContentView: View {
             }
         }
     }
-}
-
-struct ContentView_Previews: PreviewProvider {
-	static var previews: some View {
-		ContentView()
-	}
 }
