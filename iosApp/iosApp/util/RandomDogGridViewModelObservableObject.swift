@@ -14,13 +14,14 @@ public class RandomDogGridViewModelObservableObject : ObservableObject {
 
     var viewModel : FeaturesRandomDogGridViewModel
 
-    @Published private(set) var state: ResultKt
+    @Published private(set) var state: FlowResult
 
 
     init(wrapped: FeaturesRandomDogGridViewModel) {
         viewModel = wrapped
-        state = wrapped.randomDog.value as! ResultKt
-        (wrapped.randomDog.asPublisher() as AnyPublisher<ResultKt, Never>)
+        let randomDpg: Kotlinx_coroutines_coreStateFlow = wrapped.randomDog
+        state = randomDpg.value as! FlowResult
+        (randomDpg.asPublisher() as AnyPublisher<FlowResult, Never>)
             .receive(on: RunLoop.main)
             .assign(to: &$state)
 

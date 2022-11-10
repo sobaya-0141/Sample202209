@@ -7,16 +7,16 @@ struct RandomDogView: View {
     var body: some View {
         let state = ResultKs<RandomDogResponse>.init(viewmodel.state)
         switch state {
-            case .error(let ResultError):
+            case .error(let FlowResultError):
                 Text("ERROR")
             case .loading:
                 Text("LOADING")
-            case .success(let ResultSuccess):
+            case .success(let FlowResultSuccess):
                 let columns: [GridItem] = Array(
                     repeating: .init(.flexible()
                 ), count: 3)
             
-            ForEach(ResultSuccess.data!.message, id:\.self) { url in
+            ForEach(FlowResultSuccess.data!.message, id:\.self) { url in
                 LazyVGrid(columns: columns){
                     if #available(iOS 15.0, *) {
                         AsyncImage(url: URL(string: url)) { image in

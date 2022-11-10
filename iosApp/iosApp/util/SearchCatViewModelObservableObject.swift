@@ -18,6 +18,7 @@ public class SearchCatViewModelObservableObject : ObservableObject {
 
     init(wrapped: FeaturesSearchCatViewModel) {
         viewModel = wrapped
+        fetchCats()
     }
     
     func fetchCats() {

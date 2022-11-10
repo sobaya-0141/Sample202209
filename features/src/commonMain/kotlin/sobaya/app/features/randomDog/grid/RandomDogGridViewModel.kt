@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.stateIn
 import sobaya.app.data.dogApi.response.RandomDogResponse
 import sobaya.app.usecase.DeleteInsertDogUseCase
 import sobaya.app.usecase.GetRandomDogUseCase
-import sobaya.app.util.Result
+import sobaya.app.util.FlowResult
 import sobaya.app.util.RetryTrigger
 import sobaya.app.util.retryableFlow
 
@@ -18,9 +18,9 @@ class RandomDogGridViewModel(
     private val deleteInsertDogUseCase: DeleteInsertDogUseCase
 ) : ViewModel() {
     private val retryTrigger = RetryTrigger()
-    val randomDog: StateFlow<Result<RandomDogResponse>> = retryableFlow(retryTrigger) {
+    val randomDog: StateFlow<FlowResult<RandomDogResponse>> = retryableFlow(retryTrigger) {
         getRandomDogUseCase(LIMIT_DOG_COUNT)
-    }.stateIn(viewModelScope, SharingStarted.Eagerly, Result.Loading)
+    }.stateIn(viewModelScope, SharingStarted.Eagerly, FlowResult.Loading)
 
     private val _isDataCreated = MutableStateFlow<String?>(null)
     val isDataCreated: StateFlow<String?> = _isDataCreated

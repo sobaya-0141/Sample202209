@@ -17,6 +17,8 @@ struct SearchCatView: View {
                 } else {
                     // Fallback on earlier versions
                 }
+            }.onAppear {
+                viewmodel.fetchCats()
             }
         }
     }

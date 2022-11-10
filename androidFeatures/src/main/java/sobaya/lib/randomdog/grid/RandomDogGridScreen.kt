@@ -22,7 +22,7 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import sobaya.app.data.dogApi.response.RandomDogResponse
 import sobaya.app.features.randomDog.grid.RandomDogGridViewModel
-import sobaya.app.util.Result
+import sobaya.app.util.FlowResult
 import sobaya.app.util.ifTrue
 
 @OptIn(ExperimentalLifecycleComposeApi::class)
@@ -57,20 +57,20 @@ data class RandomDogGridScreenEvents(
 
 @Composable
 private fun RandomDogGridScreen(
-    uiState: Result<RandomDogResponse>,
+    uiState: FlowResult<RandomDogResponse>,
     events: RandomDogGridScreenEvents,
     modifier: Modifier = Modifier
 ) {
     val gridState = rememberLazyGridState()
 
     when (uiState) {
-        Result.Loading -> {
+        FlowResult.Loading -> {
             Text(text = "Loading")
         }
-        is Result.Error -> {
+        is FlowResult.Error -> {
             Text(text = "ERROR")
         }
-        is Result.Success -> {
+        is FlowResult.Success -> {
             LazyVerticalGrid(
                 state = gridState,
                 columns = GridCells.Fixed(3),
