@@ -17,7 +17,6 @@ kotlin {
         ios.deploymentTarget = "14.1"
         framework {
             baseName = "usecase"
-            export(libs.multiplatformPaging)
         }
     }
 

@@ -18,6 +18,9 @@ kotlin {
         podfile = project.file("../iosApp/Podfile")
         framework {
             baseName = "shared"
+            export(project(":data"))
+            export(project(":util"))
+            export(libs.multiplatformPaging)
         }
     }
 
@@ -28,7 +31,10 @@ kotlin {
                 implementation(project(":network"))
                 implementation(project(":usecase"))
                 implementation(project(":features"))
+                api(project(":data"))
+                api(project(":util"))
                 implementation(libs.koin)
+                api(libs.multiplatformPaging)
             }
         }
         val commonTest by getting {

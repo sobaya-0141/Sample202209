@@ -17,5 +17,11 @@ public extension FeaturesRandomDogGridViewModel {
     func asObserveableObject() -> RandomDogGridViewModelObservableObject{
         return RandomDogGridViewModelObservableObject(wrapped: self)
     }
+}
 
+public extension FeaturesSearchCatViewModel {
+
+    func asObserveableObject() -> SearchCatViewModelObservableObject{
+        return SearchCatViewModelObservableObject(wrapped: self)
+    }
 }

@@ -14,13 +14,13 @@ public class RandomDogGridViewModelObservableObject : ObservableObject {
 
     var viewModel : FeaturesRandomDogGridViewModel
 
-    @Published private(set) var state: UtilResult
+    @Published private(set) var state: ResultKt
 
 
     init(wrapped: FeaturesRandomDogGridViewModel) {
         viewModel = wrapped
-        state = wrapped.randomDog.value as! UtilResult
-        (wrapped.randomDog.asPublisher() as AnyPublisher<UtilResult, Never>)
+        state = wrapped.randomDog.value as! ResultKt
+        (wrapped.randomDog.asPublisher() as AnyPublisher<ResultKt, Never>)
             .receive(on: RunLoop.main)
             .assign(to: &$state)
 

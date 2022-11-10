@@ -13,16 +13,25 @@ public class SearchCatViewModelObservableObject : ObservableObject {
 
     var viewModel : FeaturesSearchCatViewModel
 
-    @Published private(set) var state: Any
-
+    @Published private(set) var state: [SearchCatResponseItem] = []
+    var hasNextPage: Bool = false
 
     init(wrapped: FeaturesSearchCatViewModel) {
         viewModel = wrapped
-        state = wrapped.catData.value as! Any
-        (wrapped.catData.asPublisher() as AnyPublisher<Any, Never>)
+    }
+    
+    func fetchCats() {
+        (viewModel.catData.asPublisher() as AnyPublisher<PagingDataKt, Never>)
             .receive(on: RunLoop.main)
-            .assign(to: &$state)
-
-
+            .sink{ (completion) in
+            }
+            receiveValue: { (cat) in
+                guard let list = (cat as? Array<SearchCatResponseItem>)?.compactMap({ $0 as? SearchCatResponseItem }) else {
+                    return
+                }
+                
+                self.state = list
+                self.hasNextPage = list.count == 10
+           }
     }
 }

@@ -5,18 +5,18 @@ struct RandomDogView: View {
     @ObservedObject var viewmodel = ViewModels().getRandomDogGridViewModel().asObserveableObject()
 
     var body: some View {
-        let state = ResultKs<DataRandomDogResponse>.init(viewmodel.state)
+        let state = ResultKs<RandomDogResponse>.init(viewmodel.state)
         switch state {
-            case .error(let utilResultError):
+            case .error(let ResultError):
                 Text("ERROR")
             case .loading:
                 Text("LOADING")
-            case .success(let utilResultSuccess):
+            case .success(let ResultSuccess):
                 let columns: [GridItem] = Array(
                     repeating: .init(.flexible()
                 ), count: 3)
             
-            ForEach(utilResultSuccess.data!.message, id:\.self) { url in
+            ForEach(ResultSuccess.data!.message, id:\.self) { url in
                 LazyVGrid(columns: columns){
                     if #available(iOS 15.0, *) {
                         AsyncImage(url: URL(string: url)) { image in

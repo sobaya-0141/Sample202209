@@ -6,27 +6,27 @@ import shared
  * selector: ClassContext/Sample202209:util/sobaya/app/util/Result */
 public enum ResultKs<T : AnyObject> {
 
-  case error(UtilResultError)
+  case error(ResultError)
   case loading
-  case success(UtilResultSuccess<T>)
+  case success(ResultSuccess<T>)
 
-  public var sealed: UtilResult {
+  public var sealed: ResultKt {
     switch self {
     case .error(let obj):
-      return obj as! UtilResult
+      return obj as! ResultKt
     case .loading:
-      return UtilResultLoading() as UtilResult
+      return ResultLoading() as! ResultKt
     case .success(let obj):
-      return obj as! UtilResult
+      return obj as! ResultKt
     }
   }
 
-  public init(_ obj: UtilResult) {
-    if let obj = obj as? UtilResultError {
+  public init(_ obj: ResultKt) {
+    if let obj = obj as? ResultError {
       self = .error(obj)
-    } else if obj is UtilResultLoading {
+    } else if obj is ResultLoading {
       self = .loading
-    } else if let obj = obj as? UtilResultSuccess<T> {
+    } else if let obj = obj as? ResultSuccess<T> {
       self = .success(obj)
     } else {
       fatalError("ResultKs not synchronized with Result class")
