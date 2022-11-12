@@ -29,6 +29,7 @@ kotlin {
                 implementation(project(":local"))
                 implementation(libs.koin)
                 implementation(libs.coroutinesCore)
+                implementation(libs.multiplatformPaging)
             }
         }
         val commonTest by getting {

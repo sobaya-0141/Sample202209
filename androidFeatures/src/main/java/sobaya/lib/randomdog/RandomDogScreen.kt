@@ -11,7 +11,7 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import sobaya.app.data.dogApi.response.RandomDogResponse
 import sobaya.app.features.randomDog.RandomDogViewModel
-import sobaya.app.util.Result
+import sobaya.app.util.FlowResult
 
 @OptIn(ExperimentalLifecycleComposeApi::class)
 @Composable
@@ -30,22 +30,22 @@ fun RandomDogScreenRout(
 
 @Composable
 private fun RandomDogScreen(
-    state: Result<RandomDogResponse>,
+    state: FlowResult<RandomDogResponse>,
     onClickReload: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     when (state) {
-        Result.Loading -> {
+        FlowResult.Loading -> {
             Text("Loading")
         }
-        is Result.Success -> {
+        is FlowResult.Success -> {
             AsyncImage(
                 model = state.data.message,
                 contentDescription = "dog",
                 modifier = modifier.fillMaxSize()
             )
         }
-        is Result.Error -> {
+        is FlowResult.Error -> {
             Text(state.exception?.message ?: "")
         }
     }

@@ -30,6 +30,7 @@ kotlin {
                 implementation(libs.koin)
                 api(libs.bundles.mvvm)
                 implementation(libs.coroutinesCore)
+                implementation(libs.multiplatformPaging)
             }
         }
         val commonTest by getting {
@@ -74,4 +75,7 @@ android {
     lint {
         disable.add("DialogFragmentCallbacksDetector")
     }
+}
+dependencies {
+    implementation("androidx.paging:paging-common-ktx:3.1.1")
 }

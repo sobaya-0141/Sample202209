@@ -8,11 +8,11 @@ import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.logging.Logging
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
+import sobaya.app.network.service.CatApi
 import sobaya.app.network.service.DogApi
 
-val ktorfit = Ktorfit
+val ktorfitBuilder = Ktorfit
     .Builder()
-    .baseUrl("https://dog.ceo/api/")
     .httpClient(
         HttpClient {
             install(ContentNegotiation) {
@@ -25,5 +25,9 @@ val ktorfit = Ktorfit
         FlowRequestConverter()
     )
     .responseConverter()
-    .build()
-val dogApi = ktorfit.create<DogApi>()
+
+val dogKtorfit = ktorfitBuilder.baseUrl("https://dog.ceo/api/").build()
+val catKtorfit = ktorfitBuilder.baseUrl("https://api.thecatapi.com/").build()
+
+val dogApi = dogKtorfit.create<DogApi>()
+val catApi = catKtorfit.create<CatApi>()

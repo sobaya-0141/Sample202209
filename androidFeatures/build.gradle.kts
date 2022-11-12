@@ -56,6 +56,7 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.bundles.accompanist.pager)
     implementation(libs.bundles.compose.navigastion)
+    implementation(libs.bundles.paging)
 
     implementation(libs.koinAndroid)
 
