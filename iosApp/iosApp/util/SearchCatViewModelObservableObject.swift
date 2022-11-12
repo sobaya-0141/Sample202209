@@ -24,15 +24,17 @@ public class SearchCatViewModelObservableObject : ObservableObject {
     func fetchCats() {
         (viewModel.catData.asPublisher() as AnyPublisher<PagingDataKt, Never>)
             .receive(on: RunLoop.main)
-            .sink{ (completion) in
-            }
-            receiveValue: { (cat) in
-                guard let list = (cat as? Array<SearchCatResponseItem>)?.compactMap({ $0 as? SearchCatResponseItem }) else {
-                    return
+            .sink{ (cat) in
+                do {
+                    guard let list = try (cat as? Array<SearchCatResponseItem>)?.compactMap({ $0 as? SearchCatResponseItem }) else {
+                        return
+                    }
+                    
+                    self.state = list
+                    self.hasNextPage = list.count == 10
+                } catch {
+                    print(error.localizedDescription)
                 }
-                
-                self.state = list
-                self.hasNextPage = list.count == 10
-           }
+            }
     }
 }
