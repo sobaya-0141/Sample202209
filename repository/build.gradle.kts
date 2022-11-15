@@ -29,6 +29,7 @@ kotlin {
                 implementation(libs.koin)
                 implementation(libs.coroutinesCore)
                 implementation(libs.sqldelightFlow)
+                implementation(libs.cashPagingCommon)
             }
         }
         val commonTest by getting {

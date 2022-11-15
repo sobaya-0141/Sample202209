@@ -20,7 +20,8 @@ kotlin {
             baseName = "shared"
             export(project(":data"))
             export(project(":util"))
-            export(libs.multiplatformPaging)
+            export(libs.cashPagingCommon)
+            export(libs.cashPagingRuntime)
         }
     }
 
@@ -34,7 +35,7 @@ kotlin {
                 api(project(":data"))
                 api(project(":util"))
                 implementation(libs.koin)
-                api(libs.multiplatformPaging)
+                api(libs.cashPagingCommon)
             }
         }
         val commonTest by getting {

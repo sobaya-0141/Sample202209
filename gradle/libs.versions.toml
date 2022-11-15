@@ -38,6 +38,7 @@ mvvm = "0.14.0"
 kswift = "0.6.0"
 ksp = "1.7.10-1.0.6"
 multiplatformPaging = "0.5.0"
+cashPaging = "3.1.1-0.1.1"
 
 [libraries]
 kotlinxCoroutinesAndroid = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref ="coroutine" }
@@ -110,6 +111,8 @@ mvvmFlowCompose = { module = "dev.icerock.moko:mvvm-flow-compose", version.ref =
 ktorLogging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 kswift = { module = "dev.icerock.moko:kswift-runtime", version.ref = "kswift" }
 multiplatformPaging = { module = "io.github.kuuuurt:multiplatform-paging", version.ref = "multiplatformPaging" }
+cashPagingCommon = { module = "app.cash.paging:paging-common", version.ref = "cashPaging" }
+cashPagingRuntime = { module = "app.cash.paging:paging-runtime", version.ref = "cashPaging" }
 
 [bundles]
 paging = ["paging", "paging-compose"]

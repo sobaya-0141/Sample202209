@@ -30,7 +30,6 @@ kotlin {
                 implementation(libs.koin)
                 api(libs.bundles.mvvm)
                 implementation(libs.coroutinesCore)
-                implementation(libs.multiplatformPaging)
             }
         }
         val commonTest by getting {
