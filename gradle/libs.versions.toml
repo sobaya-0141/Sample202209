@@ -38,6 +38,7 @@ mvvm = "0.14.0"
 kswift = "0.6.0"
 ksp = "1.7.10-1.0.6"
 multiplatformPaging = "0.5.0"
+animatableCompose = "1.0.5"
 
 [libraries]
 kotlinxCoroutinesAndroid = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref ="coroutine" }
@@ -110,10 +111,11 @@ mvvmFlowCompose = { module = "dev.icerock.moko:mvvm-flow-compose", version.ref =
 ktorLogging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 kswift = { module = "dev.icerock.moko:kswift-runtime", version.ref = "kswift" }
 multiplatformPaging = { module = "io.github.kuuuurt:multiplatform-paging", version.ref = "multiplatformPaging" }
+animatableCompose = { module = "com.github.commandiron:AnimatableCompose", version.ref = "animatableCompose" }
 
 [bundles]
 paging = ["paging", "paging-compose"]
-compose = ["composeUi", "compose-material", "compose-ui-tooling-preview", "compose-foundation-layout", "compoase-material-icons-extended", "activity-compose", "constraintlayout-compose", "coil_compose", "coil-gif", "accompanist-permissions", "material3"]
+compose = ["composeUi", "compose-material", "compose-ui-tooling-preview", "compose-foundation-layout", "compoase-material-icons-extended", "activity-compose", "constraintlayout-compose", "coil_compose", "coil-gif", "accompanist-permissions", "material3", "animatableCompose"]
 lifecycle = ["lifecycleRuntimeKtx", "lifecycleViewmodelKtx", "lifecycleViewmodelCompose", "lifecycleRuntimeCompose"]
 lifecycleCompose = ["lifecycleViewmodelCompose", "lifecycleRuntimeCompose"]
 android-test = ["androidx-junit", "espresso-core", "ui-test-junit4"]

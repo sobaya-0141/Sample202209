@@ -22,8 +22,10 @@ import androidx.navigation.compose.rememberNavController
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import sobaya.app.sample202209.android.theme.SampleTheme
 import sobaya.lib.randomdog.RandomDogScreenRout
+import sobaya.lib.randomdog.animation.AnimationScreenRoute
 import sobaya.lib.randomdog.cat.SearchCatRoute
 import sobaya.lib.randomdog.detail.RandomDogDetailScreenRoute
+import sobaya.lib.randomdog.drag.DragAndDropScreenRoute
 import sobaya.lib.randomdog.grid.RandomDogGridScreenRoute
 
 class MainActivity : ComponentActivity() {
@@ -64,6 +66,12 @@ class MainActivity : ComponentActivity() {
                                 navController = navController
                             )
                         }
+                        composable("dragAndDrop") {
+                            DragAndDropScreenRoute()
+                        }
+                        composable("animationScreen") {
+                            AnimationScreenRoute()
+                        }
                     }
                 }
             }
@@ -74,7 +82,9 @@ class MainActivity : ComponentActivity() {
 data class MenuActions(
     val onClickRandomDog: () -> Unit,
     val onClickRandomDogGrid: () -> Unit,
-    val onClickSearchCat: () -> Unit
+    val onClickSearchCat: () -> Unit,
+    val onClickDragAndDrop: () -> Unit,
+    val onClickAnimation: () -> Unit
 )
 
 @Composable
@@ -92,6 +102,12 @@ internal fun MenuScreenRoute(
             },
             onClickSearchCat = {
                 navController.navigate("searchCat")
+            },
+            onClickDragAndDrop = {
+                navController.navigate("dragAndDrop")
+            },
+            onClickAnimation = {
+                navController.navigate("animationScreen")
             }
         ),
         modifier = modifier
@@ -140,6 +156,32 @@ private fun MenuScreen(
         ) {
             Text(
                 text = "ネコ",
+                style = androidx.compose.material3.MaterialTheme.typography.titleMedium
+            )
+        }
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+                .clickable {
+                    actions.onClickDragAndDrop()
+                }
+        ) {
+            Text(
+                text = "ドラッグ",
+                style = androidx.compose.material3.MaterialTheme.typography.titleMedium
+            )
+        }
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+                .clickable {
+                    actions.onClickAnimation()
+                }
+        ) {
+            Text(
+                text = "アニメーション",
                 style = androidx.compose.material3.MaterialTheme.typography.titleMedium
             )
         }
