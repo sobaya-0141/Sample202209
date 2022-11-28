@@ -19,8 +19,10 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import org.koin.android.ext.android.get
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import sobaya.app.sample202209.android.theme.SampleTheme
+import sobaya.lib.local.Dog
 import sobaya.lib.randomdog.RandomDogScreenRout
 import sobaya.lib.randomdog.animation.AnimationScreenRoute
 import sobaya.lib.randomdog.cat.SearchCatRoute

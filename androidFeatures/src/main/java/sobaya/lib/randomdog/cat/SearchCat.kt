@@ -10,7 +10,7 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
 import coil.compose.AsyncImage
-import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.Flow
 import sobaya.app.data.dogApi.response.SearchCatResponseItem
 import sobaya.app.features.searchCat.SearchCatViewModel
 
@@ -20,7 +20,7 @@ fun SearchCatRoute(
     modifier: Modifier = Modifier,
     navController: NavController
 ) {
-    val catData = (viewModel.catData as StateFlow<PagingData<SearchCatResponseItem>>).collectAsLazyPagingItems()
+    val catData = (viewModel.catData as Flow<PagingData<SearchCatResponseItem>>).collectAsLazyPagingItems()
     SearchCat(catData = catData)
 }
 

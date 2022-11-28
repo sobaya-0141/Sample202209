@@ -2,7 +2,7 @@ plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
-    id("com.google.devtools.ksp") version "1.7.21-1.0.8"
+    id("com.google.devtools.ksp") version "1.7.10-1.0.6"
 }
 
 kotlin {
