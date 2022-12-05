@@ -1,3 +1,5 @@
+
+
 name: mobsfscan
 
 on:
@@ -8,10 +10,12 @@ on:
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2
       - name: mobsfscan
         uses: MobSF/mobsfscan@main
         with:
-          args: '. --json'
+          args: '.'
