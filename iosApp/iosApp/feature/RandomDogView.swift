@@ -1,8 +1,10 @@
+import Foundation
+import Combine
 import SwiftUI
 import shared
 
 struct RandomDogView: View {
-    @ObservedObject var viewmodel = ViewModels().getRandomDogGridViewModel().asObserveableObject()
+    @ObservedObject var viewmodel = RandomDogViewModel()
 
     var body: some View {
         let state = ResultKs<RandomDogResponse>.init(viewmodel.state)
@@ -38,4 +40,19 @@ struct RandomDogView_Previews: PreviewProvider {
 	static var previews: some View {
         RandomDogView()
 	}
+}
+
+final class RandomDogViewModel: ObservableObject {
+    @Published private(set) var state: FlowResult
+    let viewModel = ViewModels().getRandomDogGridViewModel()
+
+    init() {
+        let randomDog: Kotlinx_coroutines_coreStateFlow = viewModel.randomDog
+        state = randomDog.value as! FlowResult
+        (randomDog.asPublisher() as AnyPublisher<FlowResult, Never>)
+            .receive(on: RunLoop.main)
+            .assign(
+                to: &$state
+            )
+    }
 }

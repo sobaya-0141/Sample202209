@@ -12,14 +12,14 @@ import shared
 
 
 
-public extension FeaturesRandomDogGridViewModel {
+public extension RandomDogGridViewModel {
 
     func asObserveableObject() -> RandomDogGridViewModelObservableObject{
         return RandomDogGridViewModelObservableObject(wrapped: self)
     }
 }
 
-public extension FeaturesSearchCatViewModel {
+public extension SearchCatViewModel {
 
     func asObserveableObject() -> SearchCatViewModelObservableObject{
         return SearchCatViewModelObservableObject(wrapped: self)

@@ -11,12 +11,12 @@ import shared
 
 public class SearchCatViewModelObservableObject : ObservableObject {
 
-    var viewModel : FeaturesSearchCatViewModel
+    var viewModel : SearchCatViewModel
 
     @Published private(set) var state: [SearchCatResponseItem] = []
     var hasNextPage: Bool = false
 
-    init(wrapped: FeaturesSearchCatViewModel) {
+    init(wrapped: SearchCatViewModel) {
         viewModel = wrapped
         fetchCats()
     }

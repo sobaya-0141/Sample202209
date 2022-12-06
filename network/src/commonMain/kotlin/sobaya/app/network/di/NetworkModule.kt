@@ -1,6 +1,8 @@
 package sobaya.app.network.di
 
 import de.jensklingenberg.ktorfit.Ktorfit
+import de.jensklingenberg.ktorfit.converter.builtin.FlowResponseConverter
+import de.jensklingenberg.ktorfit.converter.request.CoreResponseConverter
 import de.jensklingenberg.ktorfit.create
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
@@ -21,7 +23,7 @@ val ktorfitBuilder = Ktorfit
             }
         }
     )
-    .responseConverter()
+    .responseConverter(FlowResponseConverter())
 
 val dogKtorfit = ktorfitBuilder.baseUrl("https://dog.ceo/api/").build()
 val catKtorfit = ktorfitBuilder.baseUrl("https://api.thecatapi.com/").build()

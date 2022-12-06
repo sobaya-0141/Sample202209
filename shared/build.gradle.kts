@@ -20,6 +20,7 @@ kotlin {
             baseName = "shared"
             export(project(":data"))
             export(project(":util"))
+            export(project(":features"))
             export(libs.multiplatformPaging)
         }
     }
@@ -30,7 +31,7 @@ kotlin {
                 implementation(project(":repository"))
                 implementation(project(":network"))
                 implementation(project(":usecase"))
-                implementation(project(":features"))
+                api(project(":features"))
                 api(project(":data"))
                 api(project(":util"))
                 implementation(libs.koin)

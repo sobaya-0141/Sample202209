@@ -12,12 +12,12 @@ import shared
 
 public class RandomDogGridViewModelObservableObject : ObservableObject {
 
-    var viewModel : FeaturesRandomDogGridViewModel
+    var viewModel : RandomDogGridViewModel
 
     @Published private(set) var state: FlowResult
 
 
-    init(wrapped: FeaturesRandomDogGridViewModel) {
+    init(wrapped: RandomDogGridViewModel) {
         viewModel = wrapped
         let randomDpg: Kotlinx_coroutines_coreStateFlow = wrapped.randomDog
         state = randomDpg.value as! FlowResult
