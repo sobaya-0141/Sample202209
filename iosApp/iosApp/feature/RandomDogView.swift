@@ -7,7 +7,7 @@ struct RandomDogView: View {
     @ObservedObject var viewmodel = ViewModels().getRandomDogGridViewModel()
 
     var body: some View {
-        let state = ResultKs<RandomDogResponse>.init(viewmodel.randomDog.value! as! FlowResult)
+        let state = ResultKs<RandomDogResponse>(viewmodel.randomDog.value!)
         switch state {
             case .error(let FlowResultError):
                 Text("ERROR")
