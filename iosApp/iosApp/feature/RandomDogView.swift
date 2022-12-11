@@ -4,10 +4,10 @@ import SwiftUI
 import shared
 
 struct RandomDogView: View {
-    @ObservedObject var viewmodel = RandomDogViewModel()
+    @ObservedObject var viewmodel = ViewModels().getRandomDogGridViewModel()
 
     var body: some View {
-        let state = ResultKs<RandomDogResponse>.init(viewmodel.state)
+        let state = ResultKs<RandomDogResponse>.init(viewmodel.randomDog.value! as! FlowResult)
         switch state {
             case .error(let FlowResultError):
                 Text("ERROR")
@@ -36,23 +36,32 @@ struct RandomDogView: View {
     }
 }
 
-struct RandomDogView_Previews: PreviewProvider {
-	static var previews: some View {
-        RandomDogView()
-	}
-}
+//struct RandomDogView_Previews: PreviewProvider {
+//	static var previews: some View {
+//        RandomDogView()
+//	}
+//}
+//
+//extension RandomDogGridViewModel {
+//    var dogs: AnyPublisher<RandomDogResponse, Never> {
+//        get {
+//            return createPublisher(self.randomDog)
+//                .eraseToAnyPublisher()
+//        }
+//    }
+//}
 
-final class RandomDogViewModel: ObservableObject {
-    @Published private(set) var state: FlowResult
-    let viewModel = ViewModels().getRandomDogGridViewModel()
-
-    init() {
-        let randomDog: Kotlinx_coroutines_coreStateFlow = viewModel.randomDog
-        state = randomDog.value as! FlowResult
-        (randomDog.asPublisher() as AnyPublisher<FlowResult, Never>)
-            .receive(on: RunLoop.main)
-            .assign(
-                to: &$state
-            )
-    }
-}
+//final class RandomDogViewModel: ObservableObject {
+//    @Published private(set) var state: FlowResult
+//    let viewModel = ViewModels().getRandomDogGridViewModel()
+//
+//    init() {
+//        let randomDog: Kotlinx_coroutines_coreStateFlow = viewModel.randomDog
+//        state = randomDog.value as! FlowResult
+//        (randomDog.asPublisher() as AnyPublisher<FlowResult, Never>)
+//            .receive(on: RunLoop.main)
+//            .assign(
+//                to: &$state
+//            )
+//    }
+//}

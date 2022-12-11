@@ -2,6 +2,7 @@ plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
+    id("dev.icerock.moko.kswift") version "0.6.1"
 }
 
 kotlin {
@@ -22,6 +23,8 @@ kotlin {
             export(project(":util"))
             export(project(":features"))
             export(libs.multiplatformPaging)
+            export(libs.mvvmCore)
+            export(libs.mvvmFlow)
         }
     }
 
@@ -35,6 +38,8 @@ kotlin {
                 api(project(":data"))
                 api(project(":util"))
                 implementation(libs.koin)
+                api(libs.mvvmCore)
+                api(libs.mvvmFlow)
                 api(libs.multiplatformPaging)
             }
         }

@@ -1,5 +1,7 @@
 package sobaya.app.features.randomDog.grid
 
+import dev.icerock.moko.mvvm.flow.CStateFlow
+import dev.icerock.moko.mvvm.flow.cStateFlow
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -18,9 +20,9 @@ class RandomDogGridViewModel(
     private val deleteInsertDogUseCase: DeleteInsertDogUseCase
 ) : ViewModel() {
     private val retryTrigger = RetryTrigger()
-    val randomDog: StateFlow<FlowResult<RandomDogResponse>> = retryableFlow(retryTrigger) {
+    val randomDog: CStateFlow<FlowResult<RandomDogResponse>> = retryableFlow(retryTrigger) {
         getRandomDogUseCase(LIMIT_DOG_COUNT)
-    }.stateIn(viewModelScope, SharingStarted.Eagerly, FlowResult.Loading)
+    }.stateIn(viewModelScope, SharingStarted.Eagerly, FlowResult.Loading).cStateFlow()
 
     private val _isDataCreated = MutableStateFlow<String?>(null)
     val isDataCreated: StateFlow<String?> = _isDataCreated
