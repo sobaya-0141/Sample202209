@@ -9,7 +9,7 @@ struct RandomDogView: View {
     var body: some View {
         let state = ResultKs<RandomDogResponse>(viewmodel.randomDog.value!)
         switch state {
-            case .error(let FlowResultError):
+            case .error(_):
                 Text("ERROR")
             case .loading:
                 Text("LOADING")
