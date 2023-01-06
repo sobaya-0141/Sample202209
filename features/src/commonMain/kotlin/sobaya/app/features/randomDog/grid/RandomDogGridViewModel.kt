@@ -22,7 +22,7 @@ class RandomDogGridViewModel(
     private val retryTrigger = RetryTrigger()
     val randomDog: CStateFlow<FlowResult<RandomDogResponse>> = retryableFlow(retryTrigger) {
         getRandomDogUseCase(LIMIT_DOG_COUNT)
-    }.stateIn(viewModelScope, SharingStarted.Eagerly, FlowResult.Loading).cStateFlow()
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), FlowResult.Loading).cStateFlow()
 
     private val _isDataCreated = MutableStateFlow<String?>(null)
     val isDataCreated: StateFlow<String?> = _isDataCreated
