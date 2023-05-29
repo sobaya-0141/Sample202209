@@ -1,4 +1,4 @@
-package sobaya.app.util
+package sobaya.lib.randomdog.util
 
 import androidx.compose.ui.Modifier
 

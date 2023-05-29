@@ -10,7 +10,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
-import androidx.compose.material3.Text
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -23,7 +23,7 @@ import coil.compose.AsyncImage
 import sobaya.app.data.dogApi.response.RandomDogResponse
 import sobaya.app.features.randomDog.grid.RandomDogGridViewModel
 import sobaya.app.util.FlowResult
-import sobaya.app.util.ifTrue
+import sobaya.lib.randomdog.util.ifTrue
 
 @OptIn(ExperimentalLifecycleComposeApi::class)
 @Composable

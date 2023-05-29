@@ -47,11 +47,14 @@ dependencies {
     implementation(project(":local"))
     implementation(project(":features"))
 
+    val composeBom = platform(libs.androidx.compose.bom)
+    implementation(composeBom)
+    androidTestImplementation(composeBom)
+
     implementation(libs.core.ktx)
     implementation(libs.material)
     implementation(libs.appcompat)
     implementation(libs.kotlinxCoroutinesAndroid)
-    implementation(libs.bundles.compose)
     implementation(libs.bundles.lifecycleCompose)
     implementation(libs.coil.compose)
     implementation(libs.bundles.accompanist.pager)

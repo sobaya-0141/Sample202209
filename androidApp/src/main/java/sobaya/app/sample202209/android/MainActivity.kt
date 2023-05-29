@@ -1,6 +1,8 @@
 package sobaya.app.sample202209.android
 
+import android.content.Context
 import android.os.Bundle
+import android.preference.PreferenceManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.clickable
@@ -33,6 +35,12 @@ import sobaya.lib.randomdog.grid.RandomDogGridScreenRoute
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val pref = getSharedPreferences("SAMPLE", Context.MODE_PRIVATE)
+        val edit = pref.edit()
+        edit.putString("TEST", "SAMPLE")
+        edit.apply()
+
         setContent {
             val navController = rememberNavController()
             SampleTheme {

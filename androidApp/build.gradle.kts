@@ -49,6 +49,10 @@ dependencies {
     implementation(project(":local"))
     implementation(project(":features"))
 
+    val composeBom = platform(libs.androidx.compose.bom)
+    implementation(composeBom)
+    androidTestImplementation(composeBom)
+
     implementation(libs.core.ktx)
     implementation(libs.material)
     implementation(libs.appcompat)
@@ -65,4 +69,15 @@ dependencies {
     androidTestImplementation(libs.bundles.android.test)
 
     implementation(platform(libs.firebaseBom))
+
+    implementation("androidx.security:security-crypto:1.0.0")
+
+    // For Identity Credential APIs
+    implementation("androidx.security:security-identity-credential:1.0.0-alpha03")
+
+    // For App Authentication APIs
+    implementation("androidx.security:security-app-authenticator:1.0.0-alpha02")
+
+    // For App Authentication API testing
+    androidTestImplementation("androidx.security:security-app-authenticator:1.0.0-alpha01")
 }
