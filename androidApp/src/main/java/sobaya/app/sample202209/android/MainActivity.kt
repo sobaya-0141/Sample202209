@@ -29,6 +29,7 @@ import sobaya.lib.randomdog.cat.SearchCatRoute
 import sobaya.lib.randomdog.detail.RandomDogDetailScreenRoute
 import sobaya.lib.randomdog.drag.DragAndDropScreenRoute
 import sobaya.lib.randomdog.grid.RandomDogGridScreenRoute
+import sobaya.lib.randomdog.scroll.ScrollScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -74,6 +75,9 @@ class MainActivity : ComponentActivity() {
                         composable("animationScreen") {
                             AnimationScreenRoute()
                         }
+                        composable("scrollScreen") {
+                            ScrollScreen()
+                        }
                     }
                 }
             }
@@ -86,7 +90,8 @@ data class MenuActions(
     val onClickRandomDogGrid: () -> Unit,
     val onClickSearchCat: () -> Unit,
     val onClickDragAndDrop: () -> Unit,
-    val onClickAnimation: () -> Unit
+    val onClickAnimation: () -> Unit,
+    val onClickScroll: () -> Unit,
 )
 
 @Composable
@@ -110,7 +115,10 @@ internal fun MenuScreenRoute(
             },
             onClickAnimation = {
                 navController.navigate("animationScreen")
-            }
+            },
+            onClickScroll = {
+                navController.navigate("scrollScreen")
+            },
         ),
         modifier = modifier
     )
@@ -184,6 +192,19 @@ private fun MenuScreen(
         ) {
             Text(
                 text = "アニメーション",
+                style = androidx.compose.material3.MaterialTheme.typography.titleMedium
+            )
+        }
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+                .clickable {
+                    actions.onClickScroll()
+                }
+        ) {
+            Text(
+                text = "スクロール",
                 style = androidx.compose.material3.MaterialTheme.typography.titleMedium
             )
         }
