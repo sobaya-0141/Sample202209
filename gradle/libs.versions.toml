@@ -36,7 +36,7 @@ material3 = "1.0.1"
 sqldelight = "1.5.3"
 mvvm = "0.14.0"
 kswift = "0.6.0"
-ksp = "1.7.10-1.0.6"
+ksp = "1.9.10-1.0.13"
 multiplatformPaging = "0.5.0"
 animatableCompose = "1.0.5"
 
