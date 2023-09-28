@@ -5,7 +5,7 @@ plugins {
     id("org.jlleitschuh.gradle.ktlint") version "11.0.0"
     id("com.android.library") version "7.4.2" apply false
     id("org.jetbrains.kotlin.android") version "1.7.10" apply false
-    id("com.squareup.sqldelight") version "1.5.4" apply false
+    id("com.squareup.sqldelight") version "1.5.5" apply false
 }
 
 buildscript {
