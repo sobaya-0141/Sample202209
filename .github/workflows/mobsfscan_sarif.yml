@@ -15,7 +15,7 @@ jobs:
       - name: mobsfscan
         uses: MobSF/mobsfscan@main
         with:
-          args: '. --sarif --output results.sarif || true'
+          args: '. --sarif --output results.sarif || false'
       - name: Upload mobsfscan report
         uses: github/codeql-action/upload-sarif@v1
         with:

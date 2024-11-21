@@ -20,6 +20,7 @@ fun SearchCatRoute(
     modifier: Modifier = Modifier,
     navController: NavController
 ) {
+    val password = "Passw0rd"
     val catData = (viewModel.catData as Flow<PagingData<SearchCatResponseItem>>).collectAsLazyPagingItems()
     SearchCat(catData = catData)
 }
